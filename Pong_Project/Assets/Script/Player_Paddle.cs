@@ -26,7 +26,7 @@ public class Player_Paddle : Paddle
     {
         if(_direction.sqrMagnitude != 0)
         {
-            rb.AddForce(_direction * speed);
+            _rb.AddForce(_direction * speed);
         }    
     }
 }

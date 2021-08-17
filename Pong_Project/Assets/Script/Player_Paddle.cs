@@ -46,18 +46,24 @@ public class Player_Paddle : Paddle
             if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
             {
                 FirePaddleOn();
+                StartCoroutine(MagicWait());
+                
             }
             //Aqua
             if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
             {
                 AquaPaddleOn();
+                StartCoroutine(MagicWait());
             }
             //grass
             if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
             {
                 GrassPaddleOn();
+                StartCoroutine(MagicWait());
+
             }
         }
+        else { return; }
   
 
     }
@@ -70,6 +76,16 @@ public class Player_Paddle : Paddle
         }    
     }
 
+    IEnumerator MagicWait()
+    {
+
+        canCastMagic = false;
+        yield return new WaitForSeconds(4);
+        MagicPaddleOff();
+        canCastMagic = true;
+
+    }
+
     public void FirePaddleOn()
     {
         isFirePaddle = true;
@@ -80,6 +96,8 @@ public class Player_Paddle : Paddle
 
         grassPaddle.SetActive(false);
         aquaPaddle.SetActive(false);
+
+        
     }
     public void AquaPaddleOn()
     {
@@ -103,5 +121,17 @@ public class Player_Paddle : Paddle
 
         firePaddle.SetActive(false);
         aquaPaddle.SetActive(false);
+    }
+
+    public void MagicPaddleOff()
+    {
+        isGrassPaddle = false;
+        grassPaddle.SetActive(false);
+
+        isAquaPaddle = false;
+        aquaPaddle.SetActive(false);
+
+        isFirePaddle = false;
+        firePaddle.SetActive(false);
     }
 }

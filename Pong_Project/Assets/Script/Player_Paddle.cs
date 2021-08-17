@@ -15,6 +15,8 @@ public class Player_Paddle : Paddle
     public bool isGrassPaddle = false;
     public GameObject grassPaddle;
 
+    public bool canCastMagic = true;
+
 
     private void Start()
     {
@@ -38,21 +40,25 @@ public class Player_Paddle : Paddle
         }
 
         // ativar as magias
-        //Fire
-        if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
+        if(canCastMagic == true)
         {
-            FirePaddleOn();
+            //Fire
+            if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
+            {
+                FirePaddleOn();
+            }
+            //Aqua
+            if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
+            {
+                AquaPaddleOn();
+            }
+            //grass
+            if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
+            {
+                GrassPaddleOn();
+            }
         }
-        //Aqua
-        if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
-        {
-            AquaPaddleOn();
-        }
-        //grass
-        if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
-        {
-            GrassPaddleOn();
-        }
+  
 
     }
 

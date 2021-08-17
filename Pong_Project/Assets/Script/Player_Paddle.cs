@@ -5,7 +5,21 @@ using UnityEngine;
 public class Player_Paddle : Paddle
 {
     private Vector2 _direction;
-    
+
+    public bool isFirePaddle = false;
+    public GameObject firePaddle;
+
+    public bool isAquaPaddle = false;
+    public GameObject aquaPaddle;
+
+    public bool isGrassPaddle = false;
+    public GameObject grassPaddle;
+
+
+    private void Start()
+    {
+        firePaddle.SetActive(false);
+    }
     void Update()
     {
         if (Input.GetKey(KeyCode.UpArrow))
@@ -19,6 +33,13 @@ public class Player_Paddle : Paddle
         else
         {
             _direction = Vector2.zero;
+        }
+
+        //tentativa de ativar as magias
+        if (Input.GetKey(KeyCode.Q))
+        {
+            isFirePaddle = true;
+            firePaddle.SetActive(true); 
         }
     }
 

@@ -31,8 +31,17 @@ public class Computer_Padle : Paddle
                 _rb.AddForce(Vector2.up * speed);
             }
         }
+    }
 
-        
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            if(collision.gameObject.GetComponent<Ball>().isFireBall == true)
+            {
+                Debug.Log("Dano");
+            }
+        }
     }
 
 }

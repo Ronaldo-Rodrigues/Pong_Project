@@ -8,8 +8,13 @@ public class Ball : MonoBehaviour
 
     public float speed = 200.0f;
 
+    [SerializeField]
+    private GameObject _fireBall;
+    public bool isFireBall = false;
+
     private void Awake()
     {
+        _fireBall.SetActive(false);
         _rb = GetComponent<Rigidbody2D>();
     }
  
@@ -35,5 +40,37 @@ public class Ball : MonoBehaviour
     public void AddForce(Vector2 force)
     {
         _rb.AddForce(force);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {   
+        //Collision com player
+        if(collision.gameObject.CompareTag("Player Paddle"))
+        {
+            if(collision.gameObject.GetComponent<Player_Paddle>().isFirePaddle == true)
+            {
+                FireBallOn();
+            }
+        }
+
+        //Collision com computer
+        if (collision.gameObject.CompareTag("Computer Paddle"))
+        {
+            
+                FireBallOff();
+            
+        }
+    }
+    public void FireBallOn()
+    {
+        _fireBall.gameObject.SetActive(true);
+        isFireBall = true;
+        
+    }
+    public void FireBallOff()
+    {
+        _fireBall.gameObject.SetActive(false);
+        isFireBall = false;
+
     }
 }

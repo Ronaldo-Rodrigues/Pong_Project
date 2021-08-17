@@ -19,6 +19,8 @@ public class Player_Paddle : Paddle
     private void Start()
     {
         firePaddle.SetActive(false);
+        aquaPaddle.SetActive(false);
+        grassPaddle.SetActive(false);
     }
     void Update()
     {
@@ -35,12 +37,23 @@ public class Player_Paddle : Paddle
             _direction = Vector2.zero;
         }
 
-        //tentativa de ativar as magias
-        if (Input.GetKey(KeyCode.Q))
+        // ativar as magias
+        //Fire
+        if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
         {
-            isFirePaddle = true;
-            firePaddle.SetActive(true); 
+            FirePaddleOn();
         }
+        //Aqua
+        if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
+        {
+            AquaPaddleOn();
+        }
+        //grass
+        if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
+        {
+            GrassPaddleOn();
+        }
+
     }
 
     private void FixedUpdate()
@@ -49,5 +62,40 @@ public class Player_Paddle : Paddle
         {
             _rb.AddForce(_direction * speed);
         }    
+    }
+
+    public void FirePaddleOn()
+    {
+        isFirePaddle = true;
+        firePaddle.SetActive(true);
+
+        isAquaPaddle = false;
+        isGrassPaddle = false;
+
+        grassPaddle.SetActive(false);
+        aquaPaddle.SetActive(false);
+    }
+    public void AquaPaddleOn()
+    {
+        isAquaPaddle = true;
+        aquaPaddle.SetActive(true);
+
+        isFirePaddle = false;
+        isGrassPaddle = false;
+
+        firePaddle.SetActive(false);
+        grassPaddle.SetActive(false);
+    }
+
+    public void GrassPaddleOn()
+    {
+        isGrassPaddle = true;
+        grassPaddle.SetActive(true);
+
+        isFirePaddle = false;
+        isAquaPaddle = false;
+
+        firePaddle.SetActive(false);
+        aquaPaddle.SetActive(false);
     }
 }

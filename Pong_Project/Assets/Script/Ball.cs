@@ -12,9 +12,21 @@ public class Ball : MonoBehaviour
     private GameObject _fireBall;
     public bool isFireBall = false;
 
+
+    [SerializeField]
+    private GameObject _aquaBall;
+    public bool isAquaBall = false;
+
+
+    [SerializeField]
+    private GameObject _grassBall;
+    public bool isGrassBall = false;
+
     private void Awake()
     {
         _fireBall.SetActive(false);
+        _aquaBall.SetActive(false);
+        _grassBall.SetActive(false);
         _rb = GetComponent<Rigidbody2D>();
     }
  
@@ -33,7 +45,7 @@ public class Ball : MonoBehaviour
     {
         _rb.position = Vector3.zero;
         _rb.velocity = Vector2.zero;
-
+        MagicOff();
     }
 
     //Adiciona força quando colide com alguma superficie
@@ -47,17 +59,26 @@ public class Ball : MonoBehaviour
         //Collision com player
         if(collision.gameObject.CompareTag("Player Paddle"))
         {
+            //for fire start
             if(collision.gameObject.GetComponent<Player_Paddle>().isFirePaddle == true)
             {
                 FireBallOn();
+            }
+            if (collision.gameObject.GetComponent<Player_Paddle>().isAquaPaddle == true)
+            {
+                AquaBallOn();
+            }
+            if (collision.gameObject.GetComponent<Player_Paddle>().isGrassPaddle == true)
+            {
+                GrassBallOn();
             }
         }
 
         //Collision com computer
         if (collision.gameObject.CompareTag("Computer Paddle"))
         {
-            
-                FireBallOff();
+
+            MagicOff();
             
         }
     }
@@ -65,12 +86,45 @@ public class Ball : MonoBehaviour
     {
         _fireBall.gameObject.SetActive(true);
         isFireBall = true;
-        
+
+        _aquaBall.gameObject.SetActive(false);
+        isAquaBall = false;
+
+        _grassBall.gameObject.SetActive(false);
+        isGrassBall = false;
     }
-    public void FireBallOff()
+    public void AquaBallOn()
     {
         _fireBall.gameObject.SetActive(false);
         isFireBall = false;
 
+        _aquaBall.gameObject.SetActive(true);
+        isAquaBall = true;
+
+        _grassBall.gameObject.SetActive(false);
+        isGrassBall = false;
+    }
+
+    public void GrassBallOn()
+    {
+        _grassBall.gameObject.SetActive(true);
+        isGrassBall = true;
+
+        _fireBall.gameObject.SetActive(false);
+        isFireBall = false;
+
+        _aquaBall.gameObject.SetActive(false);
+        isAquaBall = false;
+    }
+    public void MagicOff()
+    {
+        _grassBall.gameObject.SetActive(false);
+        isGrassBall = false;
+
+        _fireBall.gameObject.SetActive(false);
+        isFireBall = false;
+
+        _aquaBall.gameObject.SetActive(false);
+        isAquaBall = false;
     }
 }

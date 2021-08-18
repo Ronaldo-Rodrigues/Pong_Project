@@ -4,11 +4,12 @@
 
 ========== Fazendo ============
 
-
+-Criar IA do computer Paddle para ativar magias;
 
 ========== Fazer ==========
--Criar IA do computer Paddle para ativar magias;
+
 -Criar mecanica de "pedra papel tesoura" para descobrir quem vence a batalha;
+-Sistema de Paddle prolongado que se quebra
 -Definir sistema geral de objetivo por rodada;
 -Sistema de pontuação de paddles;
 -Sistema de contagem regressiva antes de iniciar a rodada;
@@ -22,6 +23,7 @@
 
 ========== Post Processing ==========
 -Implementar soundFX
+-Implementar camera Shake
 -Implementar BG Music
 -Melhorar estetica geral do jogo
 

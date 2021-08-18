@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.SerializableAttribute]
 public class Player_Paddle : Paddle
 {
     private Vector2 _direction;
@@ -86,7 +87,7 @@ public class Player_Paddle : Paddle
 
     IEnumerator FireMagicWait()
     {
-
+        //cooldown de fire paddle
         canCastMagic = false;
         canCastFire = false;
         yield return new WaitForSeconds(4);
@@ -96,7 +97,7 @@ public class Player_Paddle : Paddle
         canCastFire = true;
     }
     IEnumerator AquaMagicWait()
-    {
+    {   //cooldown de aquapaddle
         canCastMagic = false;
         canCastAqua = false;
         yield return new WaitForSeconds(4);
@@ -106,7 +107,7 @@ public class Player_Paddle : Paddle
         canCastAqua = true;
     }
     IEnumerator GrassMagicWait()
-    {
+    {   //cooldown de grass paddle
         canCastMagic = false;
         canCastGrass = false;
         yield return new WaitForSeconds(4);
@@ -126,9 +127,8 @@ public class Player_Paddle : Paddle
 
         grassPaddle.SetActive(false);
         aquaPaddle.SetActive(false);
-
-        
     }
+
     public void AquaPaddleOn()
     {
         isAquaPaddle = true;

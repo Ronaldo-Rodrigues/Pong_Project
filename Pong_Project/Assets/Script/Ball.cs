@@ -90,11 +90,6 @@ public class Ball : MonoBehaviour
         _fireBall.gameObject.SetActive(true);
         isFireBall = true;
 
-        if(isFireBall == true)
-        {
-            Debug.Log("fogo");
-        }
-
         _aquaBall.gameObject.SetActive(false);
         isAquaBall = false;
 

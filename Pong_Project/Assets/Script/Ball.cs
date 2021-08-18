@@ -22,6 +22,9 @@ public class Ball : MonoBehaviour
     private GameObject _grassBall;
     public bool isGrassBall = false;
 
+    public bool playerTouch;
+    
+
     private void Awake()
     {
         _fireBall.SetActive(false);
@@ -59,6 +62,7 @@ public class Ball : MonoBehaviour
         //Collision com player
         if(collision.gameObject.CompareTag("Player Paddle"))
         {
+            playerTouch = true;
             var playerP = collision.gameObject.GetComponent<Player_Paddle>();
             //for fire start
             if (playerP.isFirePaddle == true)
@@ -83,6 +87,41 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Computer Paddle"))
         {
             
+
+            var compterP = collision.gameObject.GetComponent<Computer_Padle>();
+            if (compterP.isFirePaddle == true)
+            {
+                if (this.isAquaBall == true)
+                {
+                    compterP.TomouDano();
+                    FireBallOn();
+                }
+                else { FireBallOn(); }
+                
+            }
+            if (compterP.isAquaPaddle == true)
+            {
+                if(this.isGrassBall == true)
+                {
+                    compterP.TomouDano();
+                    AquaBallOn();
+                }
+                else { AquaBallOn(); }
+                
+            }
+            if (compterP.isGrassPaddle == true)
+            {
+                if(this.isFireBall == true)
+                {
+                    compterP.TomouDano();
+                    GrassBallOn();
+                }
+                else { GrassBallOn(); }
+            }
+            else if (compterP.isFirePaddle == false && compterP.isGrassPaddle == false && compterP.isAquaPaddle == false)
+            {
+                MagicOff();
+            }
         }
     }
     public void FireBallOn()

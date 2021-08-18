@@ -109,10 +109,10 @@ public class Computer_Padle : Paddle
         FirePaddleOn();
         canCastMagic = false;
         canCastFire = false;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(10);
         MagicPaddleOff();
         canCastMagic = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         canCastFire = true;
     }
     public void FirePaddleOn()
@@ -133,10 +133,10 @@ public class Computer_Padle : Paddle
         AquaPaddleOn();
         canCastMagic = false;
         canCastAqua = false;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(10);
         MagicPaddleOff();
         canCastMagic = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         canCastAqua = true;
     }  
     public void AquaPaddleOn()
@@ -157,10 +157,10 @@ public class Computer_Padle : Paddle
         GrassPaddleOn();
         canCastMagic = false;
         canCastGrass = false;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(10);
         MagicPaddleOff();
         canCastMagic = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         canCastGrass = true;
     }
     public void GrassPaddleOn()
@@ -187,20 +187,10 @@ public class Computer_Padle : Paddle
         firePaddle.SetActive(false);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void TomouDano()
     {
-        
-        if (collision.gameObject.CompareTag("Ball"))
-        {
-            var bola = collision.gameObject.GetComponent<Ball>();
-
-
-            if (bola.isFireBall == true)
-            {
-                
-                Instantiate(floatingPoints, transform.position, Quaternion.identity);
-            }
-        }
+        Instantiate(floatingPoints, transform.position, Quaternion.identity);
     }
+    
 
 }

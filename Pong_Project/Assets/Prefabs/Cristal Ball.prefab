@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1268513932393547143}
   m_Layer: 0
   m_Name: GrassBall
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4960711823709974113}
   m_Layer: 0
   m_Name: AquaBall
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,6 +421,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070325464643722614, guid: 70ca4328d1d0ae24096cfed1b28b4f84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ball
       objectReference: {fileID: 0}
     - target: {fileID: 2070325464643722615, guid: 70ca4328d1d0ae24096cfed1b28b4f84,
         type: 3}

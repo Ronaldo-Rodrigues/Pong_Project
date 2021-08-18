@@ -6,6 +6,7 @@ public class Computer_Padle : Paddle
 {
 
     public Rigidbody2D ball;
+    public GameObject floatingPoints;
 
     private void FixedUpdate()
     {
@@ -35,11 +36,16 @@ public class Computer_Padle : Paddle
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (collision.gameObject.CompareTag("Ball"))
         {
-            if(collision.gameObject.GetComponent<Ball>().isFireBall == true)
+            var bola = collision.gameObject.GetComponent<Ball>();
+
+
+            if (bola.isFireBall == true)
             {
-                Debug.Log("Dano");
+                
+                Instantiate(floatingPoints, transform.position, Quaternion.identity);
             }
         }
     }

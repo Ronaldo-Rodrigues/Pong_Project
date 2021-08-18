@@ -59,26 +59,29 @@ public class Ball : MonoBehaviour
         //Collision com player
         if(collision.gameObject.CompareTag("Player Paddle"))
         {
+            var playerP = collision.gameObject.GetComponent<Player_Paddle>();
             //for fire start
-            if(collision.gameObject.GetComponent<Player_Paddle>().isFirePaddle == true)
+            if (playerP.isFirePaddle == true)
             {
                 FireBallOn();
             }
-            if (collision.gameObject.GetComponent<Player_Paddle>().isAquaPaddle == true)
+            if (playerP.isAquaPaddle == true)
             {
                 AquaBallOn();
             }
-            if (collision.gameObject.GetComponent<Player_Paddle>().isGrassPaddle == true)
+            if (playerP.isGrassPaddle == true)
             {
                 GrassBallOn();
+            }
+            else if (playerP.isFirePaddle == false && playerP.isGrassPaddle == false && playerP.isAquaPaddle == false)
+            {
+                MagicOff();
             }
         }
 
         //Collision com computer
         if (collision.gameObject.CompareTag("Computer Paddle"))
         {
-
-            MagicOff();
             
         }
     }
@@ -86,6 +89,11 @@ public class Ball : MonoBehaviour
     {
         _fireBall.gameObject.SetActive(true);
         isFireBall = true;
+
+        if(isFireBall == true)
+        {
+            Debug.Log("fogo");
+        }
 
         _aquaBall.gameObject.SetActive(false);
         isAquaBall = false;

@@ -16,6 +16,9 @@ public class Player_Paddle : Paddle
     public GameObject grassPaddle;
 
     public bool canCastMagic = true;
+    public bool canCastFire = true;
+    public bool canCastAqua = true;
+    public bool canCastGrass = true;
 
 
     private void Start()
@@ -26,6 +29,7 @@ public class Player_Paddle : Paddle
     }
     void Update()
     {
+        //Movimento
         if (Input.GetKey(KeyCode.UpArrow))
         {
             _direction = Vector2.up;
@@ -40,27 +44,31 @@ public class Player_Paddle : Paddle
         }
 
         // ativar as magias
-        if(canCastMagic == true)
+        if(canCastMagic == true && canCastFire == true)
         {
             //Fire
             if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
             {
                 FirePaddleOn();
-                StartCoroutine(MagicWait());
-                
+                StartCoroutine(FireMagicWait());
             }
+        }
+        if(canCastMagic == true && canCastAqua == true)
+        {
             //Aqua
             if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
             {
                 AquaPaddleOn();
-                StartCoroutine(MagicWait());
+                StartCoroutine(AquaMagicWait());
             }
+        }
+        if(canCastMagic == true && canCastGrass == true)
+        {
             //grass
             if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
             {
                 GrassPaddleOn();
-                StartCoroutine(MagicWait());
-
+                StartCoroutine(GrassMagicWait());
             }
         }
         else { return; }
@@ -76,14 +84,36 @@ public class Player_Paddle : Paddle
         }    
     }
 
-    IEnumerator MagicWait()
+    IEnumerator FireMagicWait()
     {
 
         canCastMagic = false;
+        canCastFire = false;
+        yield return new WaitForSeconds(4);
+        canCastMagic = true;
+        MagicPaddleOff();
+        yield return new WaitForSeconds(2);
+        canCastFire = true;
+    }
+    IEnumerator AquaMagicWait()
+    {
+        canCastMagic = false;
+        canCastAqua = false;
         yield return new WaitForSeconds(4);
         MagicPaddleOff();
         canCastMagic = true;
-
+        yield return new WaitForSeconds(2);
+        canCastAqua = true;
+    }
+    IEnumerator GrassMagicWait()
+    {
+        canCastMagic = false;
+        canCastGrass = false;
+        yield return new WaitForSeconds(4);
+        MagicPaddleOff();
+        canCastMagic = true;
+        yield return new WaitForSeconds(2);
+        canCastGrass = true;
     }
 
     public void FirePaddleOn()

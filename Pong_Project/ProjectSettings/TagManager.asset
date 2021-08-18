@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Player Paddle
+  - Ball
+  - Computer Paddle
   layers:
   - Default
   - TransparentFX

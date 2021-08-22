@@ -321,6 +321,7 @@ Transform:
   - {fileID: 239619449}
   - {fileID: 546504288}
   - {fileID: 961363982}
+  - {fileID: 1655130195}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -337,6 +338,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  scoreTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 591357106}
+        m_MethodName: PlayerScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   ball: {fileID: 299464984}
   floatingPoints: {fileID: 7563857823592370701, guid: 745e836a92665a847a054057142852db,
     type: 3}
@@ -354,7 +369,6 @@ MonoBehaviour:
   canCastFire: 1
   canCastAqua: 1
   canCastGrass: 1
-  gameManager: {fileID: 0}
 --- !u!114 &164767337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,7 +745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &245480173
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1030,8 +1044,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 138, y: -18}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 130.1, y: -65.004}
+  m_SizeDelta: {x: 144.21552, y: 124.01664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506658025
 MonoBehaviour:
@@ -1053,10 +1067,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 95
+    m_Font: {fileID: 12800000, guid: 3ec08560942b25546acf954f89033f93, type: 3}
+    m_FontSize: 80
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 176
     m_Alignment: 0
@@ -1274,6 +1288,8 @@ MonoBehaviour:
   computerPaddle: {fileID: 164767336}
   resetPlayerPaddle: {fileID: 0}
   resetCompPaddle: {fileID: 0}
+  countDown: {fileID: 878097468370943612, guid: b6263f2ade8860a46b5f8ab53a997568,
+    type: 3}
 --- !u!4 &591357107
 Transform:
   m_ObjectHideFlags: 0
@@ -1720,6 +1736,81 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1001 &754028433
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1655130195}
+    m_Modifications:
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224391177255778383, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_Name
+      value: Maguinho1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02c63c0ef51814d4480cff71b8017a26, type: 3}
+--- !u!4 &754028434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+    type: 3}
+  m_PrefabInstance: {fileID: 754028433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &838195206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,6 +1892,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &849695629 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+    type: 3}
+  m_PrefabInstance: {fileID: 1312385579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &945501315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,12 +2291,112 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1103942962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103942963}
+  m_Layer: 0
+  m_Name: Maguinho
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103942963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103942962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.48, y: -0.29, z: 0}
+  m_LocalScale: {x: -1.5, y: 1.5, z: 1}
+  m_Children:
+  - {fileID: 849695629}
+  m_Father: {fileID: 1782743893}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1221164557 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8377766073952770095, guid: 9f80bc27882792f449e2b143e8eb3f5a,
     type: 3}
   m_PrefabInstance: {fileID: 474477787}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1312385579
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1103942963}
+    m_Modifications:
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224391177255778383, guid: 02c63c0ef51814d4480cff71b8017a26,
+        type: 3}
+      propertyPath: m_Name
+      value: Maguinho1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02c63c0ef51814d4480cff71b8017a26, type: 3}
 --- !u!1 &1341717032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,8 +2431,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -138, y: -18}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -134.4, y: -65}
+  m_SizeDelta: {x: 152.78421, y: 124.024376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1341717034
 MonoBehaviour:
@@ -2257,11 +2454,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 95
+    m_Font: {fileID: 12800000, guid: 3ec08560942b25546acf954f89033f93, type: 3}
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 30
     m_MaxSize: 176
     m_Alignment: 2
     m_AlignByGeometry: 0
@@ -2385,6 +2582,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1655130194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655130195}
+  m_Layer: 0
+  m_Name: Maguinho
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1655130195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655130194}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.28, y: -0.29, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_Children:
+  - {fileID: 754028434}
+  m_Father: {fileID: 164767335}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1782743889
 GameObject:
@@ -2520,6 +2748,7 @@ Transform:
   - {fileID: 631874291}
   - {fileID: 1918867513}
   - {fileID: 1016085424}
+  - {fileID: 1103942963}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2550,6 +2779,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  floatingPoints: {fileID: 7563857823592370701, guid: 745e836a92665a847a054057142852db,
+    type: 3}
   prolongPaddle: {fileID: 1918867512}
   prolongBroke: {fileID: 1016085423}
   hpPaddle: 3

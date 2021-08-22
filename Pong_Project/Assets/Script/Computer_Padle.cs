@@ -224,14 +224,15 @@ public class Computer_Padle : Paddle
         hpPaddle--;
         
     }
+
     public void ResetCompPaddle()
     {
         hpPaddle = 3;
         prolongPaddle.SetActive(true);
         prolongBroke.SetActive(false);
-        firePaddle.SetActive(false);
-        aquaPaddle.SetActive(false);
-        grassPaddle.SetActive(false);
+        MagicPaddleOff();
+
+
     }
 
 

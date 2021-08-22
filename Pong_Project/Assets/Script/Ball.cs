@@ -142,7 +142,7 @@ public class Ball : MonoBehaviour
             }
             else if (compterP.isFirePaddle == false && compterP.isGrassPaddle == false && compterP.isAquaPaddle == false)
             {
-                if (this.isFireBall == true || this.isGrassBall == true || this.isAquaBall == true && playerTouch == false)
+                if (this.isFireBall == true || this.isGrassBall == true || this.isAquaBall == true && playerTouch == true)
                 {
                     compterP.TomouDano();
                     MagicOff();

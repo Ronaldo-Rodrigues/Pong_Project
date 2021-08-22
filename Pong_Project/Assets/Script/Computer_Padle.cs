@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Computer_Padle : Paddle
 {
+    public EventTrigger.TriggerEvent scoreTrigger;
 
     public Rigidbody2D ball;
     public GameObject floatingPoints;
-    public GameObject playerMagic; 
+    public GameObject playerMagic;
+
+    public GameObject prolongPaddle;
+    public GameObject prolongBroke;
+    public int hpPaddle = 3;
 
     public bool isFirePaddle = false;
     public GameObject firePaddle;
@@ -23,12 +29,13 @@ public class Computer_Padle : Paddle
     public bool canCastAqua = true;
     public bool canCastGrass = true;
 
+    
+
     private void Start()
     {
+       
         playerMagic = GameObject.FindGameObjectWithTag("Player Paddle");
-        firePaddle.SetActive(false);
-        aquaPaddle.SetActive(false);
-        grassPaddle.SetActive(false);
+        ResetCompPaddle();
 
     }
     private void Update()
@@ -43,7 +50,7 @@ public class Computer_Padle : Paddle
                 {
                     StartCoroutine(AquaCombatOn());
                 }
-               if(this.canCastMagic == true && canCastAqua == false && canCastFire == true)
+                else if(this.canCastMagic == true && canCastAqua == false && canCastFire == true)
                 {
                     StartCoroutine(FireCombatOn());
                 }
@@ -56,7 +63,7 @@ public class Computer_Padle : Paddle
                 {
                     StartCoroutine(GrassCombatOn());
                 }
-                if (this.canCastMagic == true && canCastGrass == false && canCastAqua == true)
+                else if (this.canCastMagic == true && canCastGrass == false && canCastAqua == true)
                 {
                     StartCoroutine(AquaCombatOn());
                 }
@@ -68,7 +75,7 @@ public class Computer_Padle : Paddle
                 {
                     StartCoroutine(FireCombatOn());
                 }
-                if (this.canCastMagic == true && canCastFire == false && canCastGrass == true)
+                else if (this.canCastMagic == true && canCastFire == false && canCastGrass == true)
                 {
                     StartCoroutine(GrassCombatOn());
                 }
@@ -76,6 +83,7 @@ public class Computer_Padle : Paddle
 
             }
         }
+       
     }
 
     private void FixedUpdate()
@@ -101,6 +109,29 @@ public class Computer_Padle : Paddle
             {
                 _rb.AddForce(Vector2.up * speed);
             }
+        }
+
+        //Prolongamento de Paddle
+        if (hpPaddle == 3)
+        {
+            prolongPaddle.SetActive(true);
+            prolongBroke.SetActive(false);
+        }
+        if (hpPaddle == 2)
+        {
+            prolongBroke.SetActive(true);
+            prolongPaddle.SetActive(false);
+        }
+        if (hpPaddle == 1)
+        {
+            prolongPaddle.SetActive(false);
+            prolongBroke.SetActive(false);
+        }
+        if (hpPaddle <= 0)
+        {
+            BaseEventData eventData = new BaseEventData(EventSystem.current);
+            this.scoreTrigger.Invoke(eventData);
+
         }
     }
     IEnumerator FireCombatOn()
@@ -190,7 +221,17 @@ public class Computer_Padle : Paddle
     public void TomouDano()
     {
         Instantiate(floatingPoints, transform.position, Quaternion.identity);
+        hpPaddle--;
     }
-    
+    public void ResetCompPaddle()
+    {
+        hpPaddle = 3;
+        prolongPaddle.SetActive(true);
+        prolongBroke.SetActive(false);
+        firePaddle.SetActive(false);
+        aquaPaddle.SetActive(false);
+        grassPaddle.SetActive(false);
+    }
+
 
 }

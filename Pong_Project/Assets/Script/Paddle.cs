@@ -17,6 +17,7 @@ public class Paddle : MonoBehaviour
     {
         _rb.position = new Vector2(_rb.position.x, 0.0f);
         _rb.velocity = Vector2.zero;
+        
     }
 
 }

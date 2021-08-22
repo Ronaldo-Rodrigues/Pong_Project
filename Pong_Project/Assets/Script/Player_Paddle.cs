@@ -1,11 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [System.SerializableAttribute]
 public class Player_Paddle : Paddle
 {
+    public EventTrigger.TriggerEvent scoreTrigger;
+
     private Vector2 _direction;
+
+    public GameObject floatingPoints;
+
+    public GameObject prolongPaddle;
+    public GameObject prolongBroke;
+    public int hpPaddle = 3;
 
     public bool isFirePaddle = false;
     public GameObject firePaddle;
@@ -21,12 +30,13 @@ public class Player_Paddle : Paddle
     public bool canCastAqua = true;
     public bool canCastGrass = true;
 
+    
+
 
     private void Start()
     {
-        firePaddle.SetActive(false);
-        aquaPaddle.SetActive(false);
-        grassPaddle.SetActive(false);
+        PlayerPaddleReset();
+
     }
     void Update()
     {
@@ -73,7 +83,9 @@ public class Player_Paddle : Paddle
             }
         }
         else { return; }
-  
+
+
+      
 
     }
 
@@ -82,7 +94,29 @@ public class Player_Paddle : Paddle
         if(_direction.sqrMagnitude != 0)
         {
             _rb.AddForce(_direction * speed);
-        }    
+        }
+        //Prolongamento de Paddle
+        if (hpPaddle == 3)
+        {
+            prolongPaddle.SetActive(true);
+            prolongBroke.SetActive(false);
+        }
+        if (hpPaddle == 2)
+        {
+            prolongBroke.SetActive(true);
+            prolongPaddle.SetActive(false);
+        }
+        if (hpPaddle == 1)
+        {
+            prolongPaddle.SetActive(false);
+            prolongBroke.SetActive(false);
+        }
+        if (hpPaddle <= 0)
+        {
+            BaseEventData eventData = new BaseEventData(EventSystem.current);
+            this.scoreTrigger.Invoke(eventData);
+
+        }
     }
 
     IEnumerator FireMagicWait()
@@ -164,4 +198,20 @@ public class Player_Paddle : Paddle
         isFirePaddle = false;
         firePaddle.SetActive(false);
     }
+
+    public void PlayerPaddleReset()
+    {
+        hpPaddle = 3;
+        prolongPaddle.SetActive(true);
+        prolongBroke.SetActive(false);
+        firePaddle.SetActive(false);
+        aquaPaddle.SetActive(false);
+        grassPaddle.SetActive(false);
+    }
+    public void TomouDano()
+    {
+        Instantiate(floatingPoints, transform.position, Quaternion.identity);
+        hpPaddle--;
+    }
+
 }

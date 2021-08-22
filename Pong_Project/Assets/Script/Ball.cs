@@ -23,7 +23,7 @@ public class Ball : MonoBehaviour
     public bool isGrassBall = false;
 
     public bool playerTouch;
-    
+
 
     private void Awake()
     {
@@ -32,8 +32,8 @@ public class Ball : MonoBehaviour
         _grassBall.SetActive(false);
         _rb = GetComponent<Rigidbody2D>();
     }
- 
-    
+
+
     //força randomica inicial para movimento da bola
     public void AddStartingForce()
     {
@@ -41,7 +41,7 @@ public class Ball : MonoBehaviour
         float y = Random.value < 0.5f ? Random.Range(-1.0f, -0.5f) : Random.Range(1.0f, 0.5f);
 
         Vector2 direction = new Vector2(x, y);
-        _rb.AddForce(direction * speed);    
+        _rb.AddForce(direction * speed);
     }
 
     public void ResetPosition()
@@ -58,60 +58,77 @@ public class Ball : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {   
+    {
         //Collision com player
-        if(collision.gameObject.CompareTag("Player Paddle"))
+        if (collision.gameObject.CompareTag("Player Paddle"))
         {
-            playerTouch = true;
+            
+            StartCoroutine(IsPlayerTouch());
             var playerP = collision.gameObject.GetComponent<Player_Paddle>();
-            //for fire start
             if (playerP.isFirePaddle == true)
             {
-                FireBallOn();
+                if (this.isAquaBall == true && this.playerTouch == false)
+                {
+                    playerP.TomouDano();
+                    FireBallOn();
+                }
+                else { FireBallOn(); }
+
             }
             if (playerP.isAquaPaddle == true)
             {
-                AquaBallOn();
+                if (this.isGrassBall == true && playerTouch == false)
+                {
+                    playerP.TomouDano();
+                    AquaBallOn();
+                }
+                else { AquaBallOn(); }
+
             }
             if (playerP.isGrassPaddle == true)
             {
-                GrassBallOn();
+                if (this.isFireBall == true && this.playerTouch == false)
+                {
+                    playerP.TomouDano();
+                    GrassBallOn();
+                }
+                else { GrassBallOn(); }
             }
             else if (playerP.isFirePaddle == false && playerP.isGrassPaddle == false && playerP.isAquaPaddle == false)
             {
                 MagicOff();
+
             }
         }
-
         //Collision com computer
         if (collision.gameObject.CompareTag("Computer Paddle"))
         {
             
-
+            StartCoroutine(IsNotPlayerTouch());
             var compterP = collision.gameObject.GetComponent<Computer_Padle>();
             if (compterP.isFirePaddle == true)
             {
-                if (this.isAquaBall == true)
+                if (this.isAquaBall == true && playerTouch == true)
                 {
                     compterP.TomouDano();
                     FireBallOn();
                 }
                 else { FireBallOn(); }
-                
+
             }
             if (compterP.isAquaPaddle == true)
             {
-                if(this.isGrassBall == true)
+                if (this.isGrassBall == true && playerTouch == true)
                 {
                     compterP.TomouDano();
                     AquaBallOn();
                 }
                 else { AquaBallOn(); }
-                
+
             }
             if (compterP.isGrassPaddle == true)
             {
-                if(this.isFireBall == true)
+                if (this.isFireBall == true && playerTouch == true)
                 {
                     compterP.TomouDano();
                     GrassBallOn();
@@ -121,8 +138,21 @@ public class Ball : MonoBehaviour
             else if (compterP.isFirePaddle == false && compterP.isGrassPaddle == false && compterP.isAquaPaddle == false)
             {
                 MagicOff();
+
             }
         }
+        
+    }
+
+    IEnumerator IsPlayerTouch()
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerTouch = true;
+    }
+    IEnumerator IsNotPlayerTouch()
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerTouch = false;
     }
     public void FireBallOn()
     {
@@ -133,40 +163,43 @@ public class Ball : MonoBehaviour
         isAquaBall = false;
 
         _grassBall.gameObject.SetActive(false);
-        isGrassBall = false;
+         isGrassBall = false;
     }
-    public void AquaBallOn()
-    {
-        _fireBall.gameObject.SetActive(false);
-        isFireBall = false;
+     public void AquaBallOn()
+        {
+            _fireBall.gameObject.SetActive(false);
+            isFireBall = false;
 
-        _aquaBall.gameObject.SetActive(true);
-        isAquaBall = true;
+            _aquaBall.gameObject.SetActive(true);
+            isAquaBall = true;
 
-        _grassBall.gameObject.SetActive(false);
-        isGrassBall = false;
-    }
+            _grassBall.gameObject.SetActive(false);
+            isGrassBall = false;
+        }
 
-    public void GrassBallOn()
-    {
-        _grassBall.gameObject.SetActive(true);
-        isGrassBall = true;
+       public void GrassBallOn()
+       {
+            _grassBall.gameObject.SetActive(true);
+            isGrassBall = true;
 
-        _fireBall.gameObject.SetActive(false);
-        isFireBall = false;
+            _fireBall.gameObject.SetActive(false);
+            isFireBall = false;
 
-        _aquaBall.gameObject.SetActive(false);
-        isAquaBall = false;
-    }
-    public void MagicOff()
-    {
-        _grassBall.gameObject.SetActive(false);
-        isGrassBall = false;
+            _aquaBall.gameObject.SetActive(false);
+            isAquaBall = false;
+       }
+       public void MagicOff()
+       {
+            _grassBall.gameObject.SetActive(false);
+            isGrassBall = false;
 
-        _fireBall.gameObject.SetActive(false);
-        isFireBall = false;
+            _fireBall.gameObject.SetActive(false);
+            isFireBall = false;
 
-        _aquaBall.gameObject.SetActive(false);
-        isAquaBall = false;
-    }
+            _aquaBall.gameObject.SetActive(false);
+            isAquaBall = false;
+       }
+
+
 }
+

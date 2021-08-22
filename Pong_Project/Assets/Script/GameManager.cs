@@ -12,21 +12,24 @@ public class GameManager : MonoBehaviour
     public Text playerScoreText, computerScoreText;
 
     public Paddle playerPaddle, computerPaddle;
+    public GameObject resetPlayerPaddle, resetCompPaddle;
 
     void Start()
     {
-        ResetRound();
+      ResetRound();
     }
     public void PlayerScore()
     {
         _playerScore++;
         this.playerScoreText.text = _playerScore.ToString();
+        ResetPaddles();
         ResetRound();
     }
     public void ComputerScore()
     {
         _computerScore++;
         this.computerScoreText.text = _computerScore.ToString();
+        ResetPaddles();
         ResetRound();
     }
 
@@ -36,6 +39,16 @@ public class GameManager : MonoBehaviour
         this.ball.AddStartingForce();
         this.playerPaddle.ResetPaddlePosition();
         this.computerPaddle.ResetPaddlePosition();
+    }
+
+    public void ResetPaddles()
+    {
+        resetPlayerPaddle = GameObject.FindGameObjectWithTag("Player Paddle");
+        var resetPlayer = resetPlayerPaddle.GetComponent<Player_Paddle>();
+        resetCompPaddle = GameObject.FindGameObjectWithTag("Computer Paddle");
+        var resetComp = resetCompPaddle.GetComponent<Computer_Padle>();
+        resetComp.ResetCompPaddle();
+        resetPlayer.PlayerPaddleReset();
     }
    
 }

@@ -124,8 +124,7 @@ public class Player_Paddle : Paddle
         //cooldown de fire paddle
         canCastMagic = false;
         canCastFire = false;
-        yield return new WaitForSeconds(4);
-        canCastMagic = true;
+        yield return new WaitForSeconds(6);
         MagicPaddleOff();
         yield return new WaitForSeconds(2);
         canCastFire = true;
@@ -134,9 +133,8 @@ public class Player_Paddle : Paddle
     {   //cooldown de aquapaddle
         canCastMagic = false;
         canCastAqua = false;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(6);
         MagicPaddleOff();
-        canCastMagic = true;
         yield return new WaitForSeconds(2);
         canCastAqua = true;
     }
@@ -144,9 +142,8 @@ public class Player_Paddle : Paddle
     {   //cooldown de grass paddle
         canCastMagic = false;
         canCastGrass = false;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(6);
         MagicPaddleOff();
-        canCastMagic = true;
         yield return new WaitForSeconds(2);
         canCastGrass = true;
     }
@@ -197,6 +194,8 @@ public class Player_Paddle : Paddle
 
         isFirePaddle = false;
         firePaddle.SetActive(false);
+
+        canCastMagic = true;
     }
 
     public void PlayerPaddleReset()
@@ -210,8 +209,10 @@ public class Player_Paddle : Paddle
     }
     public void TomouDano()
     {
+      
         Instantiate(floatingPoints, transform.position, Quaternion.identity);
         hpPaddle--;
+        
     }
 
 }

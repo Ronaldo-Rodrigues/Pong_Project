@@ -2,30 +2,30 @@
 -Melhoria da mecanica de cooldown
 -Criar IA do computer Paddle para ativar magias;
 -Criar mecanica de "pedra papel tesoura" para descobrir quem vence a batalha;
-========== Fazendo ============
-
--Sistema de Paddle prolongado que se quebra
-
-========== Fazer ==========
-
-
-
+-Sistema de Paddle prolongado que se quebra 
 -Definir sistema geral de objetivo por rodada;
 -Sistema de pontuação de paddles;
 -Sistema de contagem regressiva antes de iniciar a rodada;
+
+========== Fazendo ============
+
+
+
+========== Fazer ==========
+
 -Criar UI de Magias
 -UI de Game over and Win and Score final;
 -(possivel proxima fase);
 -Cena Inicial de Play
-
-====Scripts====
--Limpesa e revisão
 
 ========== Post Processing ==========
 -Implementar soundFX
 -Implementar camera Shake
 -Implementar BG Music
 -Melhorar estetica geral do jogo
+
+====Scripts====
+-Limpesa e revisão
 
 ========= Finalização ==========
 -descricao do Jogo

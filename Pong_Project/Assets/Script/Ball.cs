@@ -69,8 +69,8 @@ public class Ball : MonoBehaviour
             {
                 if (this.isAquaBall == true && this.playerTouch == false)
                 {
-                    playerP.TomouDano();
                     FireBallOn();
+                    playerP.TomouDano();
                 }
                 else { FireBallOn(); }
 
@@ -79,8 +79,8 @@ public class Ball : MonoBehaviour
             {
                 if (this.isGrassBall == true && playerTouch == false)
                 {
-                    playerP.TomouDano();
                     AquaBallOn();
+                    playerP.TomouDano();
                 }
                 else { AquaBallOn(); }
 
@@ -89,15 +89,20 @@ public class Ball : MonoBehaviour
             {
                 if (this.isFireBall == true && this.playerTouch == false)
                 {
-                    playerP.TomouDano();
                     GrassBallOn();
+                    playerP.TomouDano();
                 }
                 else { GrassBallOn(); }
             }
             else if (playerP.isFirePaddle == false && playerP.isGrassPaddle == false && playerP.isAquaPaddle == false)
             {
-                MagicOff();
-
+               
+                if(this.isFireBall == true || this.isGrassBall == true || this.isAquaBall == true && playerTouch == false)
+                {
+                    playerP.TomouDano();
+                    MagicOff();
+                }
+                else { MagicOff(); }
             }
         }
         //Collision com computer
@@ -110,8 +115,8 @@ public class Ball : MonoBehaviour
             {
                 if (this.isAquaBall == true && playerTouch == true)
                 {
-                    compterP.TomouDano();
                     FireBallOn();
+                    compterP.TomouDano();
                 }
                 else { FireBallOn(); }
 
@@ -120,8 +125,8 @@ public class Ball : MonoBehaviour
             {
                 if (this.isGrassBall == true && playerTouch == true)
                 {
-                    compterP.TomouDano();
                     AquaBallOn();
+                    compterP.TomouDano();
                 }
                 else { AquaBallOn(); }
 
@@ -130,15 +135,19 @@ public class Ball : MonoBehaviour
             {
                 if (this.isFireBall == true && playerTouch == true)
                 {
-                    compterP.TomouDano();
                     GrassBallOn();
+                    compterP.TomouDano();
                 }
                 else { GrassBallOn(); }
             }
             else if (compterP.isFirePaddle == false && compterP.isGrassPaddle == false && compterP.isAquaPaddle == false)
             {
-                MagicOff();
-
+                if (this.isFireBall == true || this.isGrassBall == true || this.isAquaBall == true && playerTouch == false)
+                {
+                    compterP.TomouDano();
+                    MagicOff();
+                }
+                else { MagicOff(); }
             }
         }
         

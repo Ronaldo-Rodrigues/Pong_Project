@@ -14,12 +14,16 @@ public class GameManager : MonoBehaviour
     public Paddle playerPaddle, computerPaddle;
     public GameObject resetPlayerPaddle, resetCompPaddle;
 
+    public GameObject countDown;
+
     void Start()
     {
       ResetRound();
     }
+
     public void PlayerScore()
     {
+        
         _playerScore++;
         this.playerScoreText.text = _playerScore.ToString();
         ResetPaddles();
@@ -35,8 +39,15 @@ public class GameManager : MonoBehaviour
 
     public void ResetRound()
     {
+        var findCountDown = GameObject.FindGameObjectWithTag("Count Down");
+        
+            if (findCountDown != null)
+            {
+                Destroy(findCountDown.gameObject);
+            }
+        
+        Instantiate(countDown, new Vector2(0, 0), Quaternion.identity);
         this.ball.ResetPosition();
-        this.ball.AddStartingForce();
         this.playerPaddle.ResetPaddlePosition();
         this.computerPaddle.ResetPaddlePosition();
     }
@@ -49,6 +60,11 @@ public class GameManager : MonoBehaviour
         var resetComp = resetCompPaddle.GetComponent<Computer_Padle>();
         resetComp.ResetCompPaddle();
         resetPlayer.PlayerPaddleReset();
+    }
+
+    public void forcaInicial()
+    {
+        this.ball.AddStartingForce();
     }
    
 }

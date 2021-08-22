@@ -142,7 +142,6 @@ public class Computer_Padle : Paddle
         canCastFire = false;
         yield return new WaitForSeconds(10);
         MagicPaddleOff();
-        canCastMagic = true;
         yield return new WaitForSeconds(1);
         canCastFire = true;
     }
@@ -166,7 +165,6 @@ public class Computer_Padle : Paddle
         canCastAqua = false;
         yield return new WaitForSeconds(10);
         MagicPaddleOff();
-        canCastMagic = true;
         yield return new WaitForSeconds(1);
         canCastAqua = true;
     }  
@@ -190,7 +188,6 @@ public class Computer_Padle : Paddle
         canCastGrass = false;
         yield return new WaitForSeconds(10);
         MagicPaddleOff();
-        canCastMagic = true;
         yield return new WaitForSeconds(1);
         canCastGrass = true;
     }
@@ -216,12 +213,16 @@ public class Computer_Padle : Paddle
 
         isFirePaddle = false;
         firePaddle.SetActive(false);
+
+        canCastMagic = true;
     }
 
     public void TomouDano()
     {
+        
         Instantiate(floatingPoints, transform.position, Quaternion.identity);
         hpPaddle--;
+        
     }
     public void ResetCompPaddle()
     {

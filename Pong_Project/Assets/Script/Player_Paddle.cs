@@ -12,6 +12,8 @@ public class Player_Paddle : Paddle
 
     public GameObject floatingPoints;
 
+   // public GameObject gameManager;
+
     public GameObject prolongPaddle;
     public GameObject prolongBroke;
     public int hpPaddle = 3;
@@ -30,11 +32,12 @@ public class Player_Paddle : Paddle
     public bool canCastAqua = true;
     public bool canCastGrass = true;
 
-    
+
 
 
     private void Start()
     {
+        //gameManager = GameObject.FindGameObjectWithTag("Game Manager");
         PlayerPaddleReset();
 
     }
@@ -64,28 +67,34 @@ public class Player_Paddle : Paddle
                 StartCoroutine(FireMagicWait());
             }
         }
-        if(canCastMagic == true && canCastAqua == true)
+        if(canCastMagic == true && canCastGrass == true)
         {
             //Aqua
             if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
+            {
+                GrassPaddleOn();
+                StartCoroutine(GrassMagicWait());
+               
+            }
+        }
+        if(canCastMagic == true && canCastAqua == true)
+        {
+            //grass
+            if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
             {
                 AquaPaddleOn();
                 StartCoroutine(AquaMagicWait());
             }
         }
-        if(canCastMagic == true && canCastGrass == true)
-        {
-            //grass
-            if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
-            {
-                GrassPaddleOn();
-                StartCoroutine(GrassMagicWait());
-            }
-        }
         else { return; }
 
+        //Mostrar magias no ui
+        //if(gameManager != null)
+        //{
+           // var gm = gameManager.GetComponent<GameManager>();
+          //  gm.PlayerMagicDisplay();
+      //  }
 
-      
 
     }
 
@@ -124,27 +133,28 @@ public class Player_Paddle : Paddle
         //cooldown de fire paddle
         canCastMagic = false;
         canCastFire = false;
-        yield return new WaitForSeconds(6);
+        
+        yield return new WaitForSeconds(3);
         MagicPaddleOff();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(7);
         canCastFire = true;
     }
     IEnumerator AquaMagicWait()
     {   //cooldown de aquapaddle
         canCastMagic = false;
         canCastAqua = false;
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(3);
         MagicPaddleOff();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(7);
         canCastAqua = true;
     }
     IEnumerator GrassMagicWait()
     {   //cooldown de grass paddle
         canCastMagic = false;
         canCastGrass = false;
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(3);
         MagicPaddleOff();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(7);
         canCastGrass = true;
     }
 

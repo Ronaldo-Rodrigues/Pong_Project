@@ -8,17 +8,100 @@ public class GameManager : MonoBehaviour
     public Ball ball;
 
     private int _playerScore, _computerScore;
-    
+
     public Text playerScoreText, computerScoreText;
 
     public Paddle playerPaddle, computerPaddle;
     public GameObject resetPlayerPaddle, resetCompPaddle;
 
+    public Image pfireMagicOFF, paquaMagicOFF, pgrassMagicOFF, cfireMagicOFF, caquaMagicOFF, cgrassMagicOFF;
+
     public GameObject countDown;
 
     void Start()
     {
-      ResetRound();
+        ResetRound();
+    }
+    private void Update()
+    {
+        PlayerMagicDisplay();
+        ComputerMagicDisplay();
+    }
+    public void PlayerMagicDisplay()
+    {
+        var playerP = playerPaddle.GetComponent<Player_Paddle>();
+
+        if (playerP.canCastAqua == false)
+        {
+            paquaMagicOFF.enabled = true;
+        }
+        else if (playerP.canCastMagic == false)
+        {
+            paquaMagicOFF.enabled = true;
+        }
+        else { paquaMagicOFF.enabled = false; }
+        
+
+
+       if (playerP.canCastFire == false )
+        {
+            pfireMagicOFF.enabled = true;
+        }
+        else if(playerP.canCastMagic == false)
+        {
+            pfireMagicOFF.enabled = true;
+        }
+        else{ pfireMagicOFF.enabled = false; }
+
+
+
+        if (playerP.canCastGrass == false)
+        {
+            pgrassMagicOFF.enabled = true;
+        }
+       else if(playerP.canCastMagic == false)
+        {
+            pgrassMagicOFF.enabled = true;
+        }
+        else{ pgrassMagicOFF.enabled = false;}
+    }
+    public void ComputerMagicDisplay()
+    {
+        var computerP = computerPaddle.GetComponent<Computer_Padle>();
+
+        if (computerP.canCastAqua == false)
+        {
+            caquaMagicOFF.enabled = true;
+        }
+        else if (computerP.canCastMagic == false)
+        {
+           caquaMagicOFF.enabled = true;
+        }
+        else { caquaMagicOFF.enabled = false; }
+
+
+
+        if (computerP.canCastFire == false)
+        {
+            cfireMagicOFF.enabled = true;
+        }
+        else if (computerP.canCastMagic == false)
+        {
+            cfireMagicOFF.enabled = true;
+        }
+        else { cfireMagicOFF.enabled = false; }
+
+
+
+        if (computerP.canCastGrass == false)
+        {
+            cgrassMagicOFF.enabled = true;
+        }
+        else if (computerP.canCastMagic == false)
+        {
+            cgrassMagicOFF.enabled = true;
+        }
+        else { cgrassMagicOFF.enabled = false; }
     }
 
     public void PlayerScore()

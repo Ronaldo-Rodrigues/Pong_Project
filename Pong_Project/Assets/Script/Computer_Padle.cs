@@ -29,11 +29,13 @@ public class Computer_Padle : Paddle
     public bool canCastAqua = true;
     public bool canCastGrass = true;
 
-    
+    private GameObject _contraAtaque;
+
+
 
     private void Start()
     {
-       
+       _contraAtaque = GameObject.FindGameObjectWithTag("Contra Ataque");
         playerMagic = GameObject.FindGameObjectWithTag("Player Paddle");
         ResetCompPaddle();
 
@@ -41,76 +43,112 @@ public class Computer_Padle : Paddle
     private void Update()
     {
         if(playerMagic)
-        {
-            var qualMagica = playerMagic.GetComponent<Player_Paddle>();
-            //Contra-Ataque para fogo
-            if (qualMagica.isFirePaddle == true)
+        { 
+            var bola = ball.GetComponent<Ball>();
+            
+            //se o padler puder jogar magia quando a bola se aproxmar
+            if (bola.transform.position.x <= -1 && bola.isAquaBall == false && bola.isFireBall == false && bola.isGrassBall == false)
             {
-                if(this.canCastMagic == true && canCastAqua == true)
+                //rebate zero
+                if (canCastMagic == true)
                 {
-                    StartCoroutine(AquaCombatOn());
-                }
-                else if(this.canCastMagic == true && canCastAqua == false && canCastFire == true)
-                {
-                    StartCoroutine(FireCombatOn());
-                }
-                else { return; }
-                
-            }
-            if (qualMagica.isAquaPaddle == true)
-            {
-                if (this.canCastMagic == true && canCastGrass == true)
-                {
-                    StartCoroutine(GrassCombatOn());
-                }
-                else if (this.canCastMagic == true && canCastGrass == false && canCastAqua == true)
-                {
-                    StartCoroutine(AquaCombatOn());
+                    var castRandom = Random.Range(1, 3);
+                    
+                    if (castRandom == 1)
+                    {
+                        StartCoroutine(GrassCombatOn());
+                    }
+                    if (castRandom == 2)
+                    {
+                        StartCoroutine(AquaCombatOn());
+                    }
+                    if (castRandom == 3)
+                    {
+                        StartCoroutine(FireCombatOn());
+                    }
                 }
                 else { return; }
             }
-            if (qualMagica.isGrassPaddle == true)
-            {
-                if (this.canCastMagic == true && canCastFire == true)
-                {
-                    StartCoroutine(FireCombatOn());
-                }
-                else if (this.canCastMagic == true && canCastFire == false && canCastGrass == true)
-                {
-                    StartCoroutine(GrassCombatOn());
-                }
-                else { return; }
 
-            }
+            //Contra-Ataque 
+            var qualMagica = playerMagic.GetComponent<Player_Paddle>();
+
+            if (qualMagica.isFirePaddle == true)
+           {
+              if(this.canCastMagic == true && canCastAqua == true)
+              {
+                   StartCoroutine(AquaCombatOn());
+              }
+              else if(this.canCastMagic == true && canCastAqua == false && canCastFire == true)
+              {
+                   StartCoroutine(FireCombatOn());
+              }
+              else { return; }
+
+           }
+           if (qualMagica.isAquaPaddle == true)
+           {
+               if (this.canCastMagic == true && canCastGrass == true)
+               {
+                   StartCoroutine(GrassCombatOn());
+               }
+               else if (this.canCastMagic == true && canCastGrass == false && canCastAqua == true)
+               {
+                   StartCoroutine(AquaCombatOn());
+               }
+               else { return; }
+           }
+           if (qualMagica.isGrassPaddle == true)
+           {
+               if (this.canCastMagic == true && canCastFire == true)
+               {
+                   StartCoroutine(FireCombatOn());
+               }
+               else if (this.canCastMagic == true && canCastFire == false && canCastGrass == true)
+               {
+                   StartCoroutine(GrassCombatOn());
+               }
+               else { return; }
+
+           }
         }
-       
+
     }
 
-    private void FixedUpdate()
+        private void FixedUpdate()
     {
+
         if (this.ball.velocity.x < 0.0f)
         {
+
+            //Faz o paddle ir de encontro com a bola
             if (this.ball.position.y > this.transform.position.y)
             {
                 _rb.AddForce(Vector2.up * speed);
             }
-            else if(this.ball.position.y < this.transform.position.y)
+            else if (this.ball.position.y < this.transform.position.y)
             {
                 _rb.AddForce(Vector2.down * speed);
             }
-        }
-        else
-        {
-            if (this.transform.position.y > 0.0f)
+
+            //retorna o paddle para o centro
+            else
             {
-                _rb.AddForce(Vector2.down * speed); 
-            }
-            else if (this.transform.position.y < 0.0f)
-            {
-                _rb.AddForce(Vector2.up * speed);
+                if (this.transform.position.y > 0.0f)
+                {
+                    _rb.AddForce(Vector2.down * speed);
+                }
+                else if (this.transform.position.y < 0.0f)
+                {
+                    _rb.AddForce(Vector2.up * speed);
+                }
             }
         }
 
+        if (this.ball.position.x < -1.0f)
+        {
+           
+        }
         //Prolongamento de Paddle
         if (hpPaddle == 3)
         {
@@ -136,13 +174,14 @@ public class Computer_Padle : Paddle
     }
     IEnumerator FireCombatOn()
     {
-        yield return new WaitForSeconds(1);
+        
         FirePaddleOn();
         canCastMagic = false;
         canCastFire = false;
-        yield return new WaitForSeconds(10);
+
+        yield return new WaitForSeconds(3);
         MagicPaddleOff();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(7);
         canCastFire = true;
     }
     public void FirePaddleOn()
@@ -159,13 +198,13 @@ public class Computer_Padle : Paddle
 
     IEnumerator AquaCombatOn()
     {
-        yield return new WaitForSeconds(1);
+      
         AquaPaddleOn();
         canCastMagic = false;
         canCastAqua = false;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(3);
         MagicPaddleOff();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(7);
         canCastAqua = true;
     }  
     public void AquaPaddleOn()
@@ -182,13 +221,13 @@ public class Computer_Padle : Paddle
 
     IEnumerator GrassCombatOn()
     {
-        yield return new WaitForSeconds(1);
+ 
         GrassPaddleOn();
         canCastMagic = false;
         canCastGrass = false;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(3);
         MagicPaddleOff();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(7);
         canCastGrass = true;
     }
     public void GrassPaddleOn()

@@ -79,12 +79,22 @@ PrefabInstance:
     - target: {fileID: 782334780050833139, guid: 71e10fc45acc380469d81b4eb66c1031,
         type: 3}
       propertyPath: m_FontSize
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 782334780050833139, guid: 71e10fc45acc380469d81b4eb66c1031,
         type: 3}
       propertyPath: m_Text
       value: Damage!
+      objectReference: {fileID: 0}
+    - target: {fileID: 782334780050833139, guid: 71e10fc45acc380469d81b4eb66c1031,
+        type: 3}
+      propertyPath: m_OffsetZ
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 782334780050833139, guid: 71e10fc45acc380469d81b4eb66c1031,
+        type: 3}
+      propertyPath: m_Color.rgba
+      value: 4287598575
       objectReference: {fileID: 0}
     - target: {fileID: 1913705433178404737, guid: 71e10fc45acc380469d81b4eb66c1031,
         type: 3}

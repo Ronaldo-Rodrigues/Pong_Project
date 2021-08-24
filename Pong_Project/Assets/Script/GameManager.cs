@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject countDown;
 
+   
+    public bool isGoingUP = false, isGoingDown = false;
+
     void Start()
     {
         ResetRound();
@@ -149,5 +152,16 @@ public class GameManager : MonoBehaviour
     {
         this.ball.AddStartingForce();
     }
-   
+
+
+    public void buttonUp()
+    {
+        isGoingUP = true;
+        isGoingDown = false;
+    }
+    public void buttonDown()
+    {
+        isGoingDown = true;
+        isGoingUP = false;
+    }
 }

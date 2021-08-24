@@ -12,6 +12,9 @@ public class Player_Paddle : Paddle
 
     public GameObject floatingPoints;
 
+    public GameObject buttonUp;
+    public GameObject buttonDown;
+
    // public GameObject gameManager;
 
     public GameObject prolongPaddle;
@@ -32,23 +35,26 @@ public class Player_Paddle : Paddle
     public bool canCastAqua = true;
     public bool canCastGrass = true;
 
+    public GameManager gm;
+
 
 
 
     private void Start()
     {
-        //gameManager = GameObject.FindGameObjectWithTag("Game Manager");
+       
         PlayerPaddleReset();
-
+        
     }
     void Update()
     {
+        var gm1 = gm.GetComponent<GameManager>();
         //Movimento
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || gm1.isGoingUP == true )
         {
             _direction = Vector2.up;
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) || gm1.isGoingDown == false )
         {
             _direction = Vector2.down;
         }

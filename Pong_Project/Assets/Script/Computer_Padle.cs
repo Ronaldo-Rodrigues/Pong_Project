@@ -29,13 +29,13 @@ public class Computer_Padle : Paddle
     public bool canCastAqua = true;
     public bool canCastGrass = true;
 
-    private GameObject _contraAtaque;
+    
 
 
 
     private void Start()
     {
-       _contraAtaque = GameObject.FindGameObjectWithTag("Contra Ataque");
+       
         playerMagic = GameObject.FindGameObjectWithTag("Player Paddle");
         ResetCompPaddle();
 
@@ -174,14 +174,15 @@ public class Computer_Padle : Paddle
     }
     IEnumerator FireCombatOn()
     {
-        
-        FirePaddleOn();
         canCastMagic = false;
+        yield return new WaitForSeconds(1);
+        FirePaddleOn();
+        
         canCastFire = false;
 
         yield return new WaitForSeconds(3);
         MagicPaddleOff();
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(8);
         canCastFire = true;
     }
     public void FirePaddleOn()
@@ -198,13 +199,14 @@ public class Computer_Padle : Paddle
 
     IEnumerator AquaCombatOn()
     {
-      
-        AquaPaddleOn();
         canCastMagic = false;
+        yield return new WaitForSeconds(1);
+        AquaPaddleOn();
+       
         canCastAqua = false;
         yield return new WaitForSeconds(3);
         MagicPaddleOff();
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(8);
         canCastAqua = true;
     }  
     public void AquaPaddleOn()
@@ -221,13 +223,14 @@ public class Computer_Padle : Paddle
 
     IEnumerator GrassCombatOn()
     {
- 
-        GrassPaddleOn();
         canCastMagic = false;
+        yield return new WaitForSeconds(1);
+        GrassPaddleOn();
+        
         canCastGrass = false;
         yield return new WaitForSeconds(3);
         MagicPaddleOff();
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(9);
         canCastGrass = true;
     }
     public void GrassPaddleOn()

@@ -42,18 +42,20 @@ public class Ball : MonoBehaviour
 
         Vector2 direction = new Vector2(x, y);
         _rb.AddForce(direction * speed);
+        
     }
 
     public void ResetPosition()
     {
-        _rb.position = Vector3.zero;
         _rb.velocity = Vector2.zero;
+        _rb.position = Vector3.zero;
         MagicOff();
     }
 
     //Adiciona força quando colide com alguma superficie
     public void AddForce(Vector2 force)
     {
+        
         _rb.AddForce(force);
     }
 

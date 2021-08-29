@@ -12,8 +12,7 @@ public class Player_Paddle : Paddle
 
     public GameObject floatingPoints;
 
-    public GameObject buttonUp;
-    public GameObject buttonDown;
+ 
 
    // public GameObject gameManager;
 
@@ -48,23 +47,26 @@ public class Player_Paddle : Paddle
     }
     void Update()
     {
-        var gm1 = gm.GetComponent<GameManager>();
         //Movimento
-        if (Input.GetKey(KeyCode.UpArrow) || gm1.isGoingUP == true )
+        if (Input.GetKey(KeyCode.UpArrow))
         {
+            
             _direction = Vector2.up;
+            
         }
-        else if (Input.GetKey(KeyCode.DownArrow) || gm1.isGoingDown == false )
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             _direction = Vector2.down;
+            
         }
         else
         {
             _direction = Vector2.zero;
         }
 
+
         // ativar as magias
-        if(canCastMagic == true && canCastFire == true)
+        if (canCastMagic == true && canCastFire == true)
         {
             //Fire
             if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
@@ -219,9 +221,10 @@ public class Player_Paddle : Paddle
         hpPaddle = 3;
         prolongPaddle.SetActive(true);
         prolongBroke.SetActive(false);
-        firePaddle.SetActive(false);
-        aquaPaddle.SetActive(false);
-        grassPaddle.SetActive(false);
+        MagicPaddleOff();
+        this.transform.position = new Vector2(transform.position.x, 0);
+         
+        
     }
     public void TomouDano()
     {

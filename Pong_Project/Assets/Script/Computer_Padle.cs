@@ -180,7 +180,7 @@ public class Computer_Padle : Paddle
         
         canCastFire = false;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         MagicPaddleOff();
         yield return new WaitForSeconds(8);
         canCastFire = true;
@@ -202,9 +202,8 @@ public class Computer_Padle : Paddle
         canCastMagic = false;
         yield return new WaitForSeconds(1);
         AquaPaddleOn();
-       
         canCastAqua = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         MagicPaddleOff();
         yield return new WaitForSeconds(8);
         canCastAqua = true;
@@ -228,7 +227,7 @@ public class Computer_Padle : Paddle
         GrassPaddleOn();
         
         canCastGrass = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         MagicPaddleOff();
         yield return new WaitForSeconds(9);
         canCastGrass = true;
@@ -272,10 +271,7 @@ public class Computer_Padle : Paddle
         hpPaddle = 3;
         prolongPaddle.SetActive(true);
         prolongBroke.SetActive(false);
+        this.transform.position = new Vector2(transform.position.x, 0);
         MagicPaddleOff();
-
-
     }
-
-
 }

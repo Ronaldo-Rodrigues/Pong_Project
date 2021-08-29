@@ -9,6 +9,7 @@ public class CountDownStarts : MonoBehaviour
     public void StartBola()
     {
         gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        gm.forcaInicial();
+        gm.ForcaInicial();
+       
     }
 }

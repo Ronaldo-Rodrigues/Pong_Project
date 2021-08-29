@@ -29,9 +29,11 @@ public class Computer_Padle : Paddle
     public bool canCastAqua = true;
     public bool canCastGrass = true;
 
-    
-
-
+    //sons
+    public AudioClip danoClip;
+    public AudioClip magicActiveClip;
+    public AudioClip shatter1Clip;
+    public AudioClip shatter2Clip;
 
     private void Start()
     {
@@ -260,8 +262,16 @@ public class Computer_Padle : Paddle
 
     public void TomouDano()
     {
-        
+        AudioManager.instance.Dano(danoClip);
         Instantiate(floatingPoints, transform.position, Quaternion.identity);
+        if (hpPaddle == 3)
+        {
+            AudioManager.instance.Shatter(shatter1Clip);
+        }
+        if (hpPaddle == 2)
+        {
+            AudioManager.instance.Shatter(shatter2Clip);
+        }
         hpPaddle--;
         
     }

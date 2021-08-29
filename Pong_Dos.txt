@@ -18,9 +18,15 @@
 -Criar UI de Magias
 
 -UI de Game over;
+-Quadro de resultados: Win and Score final;
+
+-Cena Inicial de Play
+
+
+
 ========== Fazendo ==========
 
--Quadro de resultados: Win and Score final;
+-Implementar soundFX
 
 
 =
@@ -28,15 +34,9 @@
 
 
 ========== Fazer ==========
-
--(possivel proxima fase);
-
--Cena Inicial de Play
-
-
 ========== Post Processing ==========
 
--Implementar soundFX
+
 -Implementar camera Shake
 
 -Implementar BG Music

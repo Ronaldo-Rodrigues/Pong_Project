@@ -24,6 +24,12 @@ public class Ball : MonoBehaviour
 
     public bool playerTouch;
 
+    //sons
+    public AudioClip fireBallClip;
+    public AudioClip aquaBallClip;
+    public AudioClip grassBallClip;
+    public AudioClip glassBallClip;
+    public AudioClip hitClip;
 
     private void Awake()
     {
@@ -61,6 +67,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        AudioManager.instance.GlassBall(glassBallClip);
         //Collision com player
         if (collision.gameObject.CompareTag("Player Paddle"))
         {
@@ -71,30 +78,45 @@ public class Ball : MonoBehaviour
             {
                 if (this.isAquaBall == true && this.playerTouch == false)
                 {
+                    AudioManager.instance.BolaMagic(fireBallClip);
                     FireBallOn();
                     playerP.TomouDano();
                 }
-                else { FireBallOn(); }
+                else 
+                {
+                    AudioManager.instance.BolaMagic(fireBallClip);
+                    FireBallOn(); 
+                }
 
             }
             if (playerP.isAquaPaddle == true)
             {
                 if (this.isGrassBall == true && playerTouch == false)
                 {
+                    AudioManager.instance.BolaMagic(aquaBallClip);
                     AquaBallOn();
                     playerP.TomouDano();
                 }
-                else { AquaBallOn(); }
+                else 
+                {
+                    AudioManager.instance.BolaMagic(aquaBallClip);
+                    AquaBallOn(); 
+                }
 
             }
             if (playerP.isGrassPaddle == true)
             {
                 if (this.isFireBall == true && this.playerTouch == false)
                 {
+                    AudioManager.instance.BolaMagic(grassBallClip);
                     GrassBallOn();
                     playerP.TomouDano();
                 }
-                else { GrassBallOn(); }
+                else 
+                {
+                    AudioManager.instance.BolaMagic(grassBallClip);
+                    GrassBallOn(); 
+                }
             }
             else if (playerP.isFirePaddle == false && playerP.isGrassPaddle == false && playerP.isAquaPaddle == false)
             {
@@ -117,30 +139,45 @@ public class Ball : MonoBehaviour
             {
                 if (this.isAquaBall == true && playerTouch == true)
                 {
+                    AudioManager.instance.BolaMagic(fireBallClip);
                     FireBallOn();
                     compterP.TomouDano();
                 }
-                else { FireBallOn(); }
+                else
+                {
+                    AudioManager.instance.BolaMagic(fireBallClip);
+                    FireBallOn(); 
+                }
 
             }
             if (compterP.isAquaPaddle == true)
             {
                 if (this.isGrassBall == true && playerTouch == true)
                 {
+                    AudioManager.instance.BolaMagic(aquaBallClip);
                     AquaBallOn();
                     compterP.TomouDano();
                 }
-                else { AquaBallOn(); }
+                else
+                {
+                    AudioManager.instance.BolaMagic(aquaBallClip);
+                    AquaBallOn(); 
+                }
 
             }
             if (compterP.isGrassPaddle == true)
             {
                 if (this.isFireBall == true && playerTouch == true)
                 {
+                    AudioManager.instance.BolaMagic(grassBallClip);
                     GrassBallOn();
                     compterP.TomouDano();
                 }
-                else { GrassBallOn(); }
+                else 
+                {
+                    AudioManager.instance.BolaMagic(grassBallClip);
+                    GrassBallOn(); 
+                }
             }
             else if (compterP.isFirePaddle == false && compterP.isGrassPaddle == false && compterP.isAquaPaddle == false)
             {
@@ -167,6 +204,7 @@ public class Ball : MonoBehaviour
     }
     public void FireBallOn()
     {
+        
         _fireBall.gameObject.SetActive(true);
         isFireBall = true;
 
@@ -178,18 +216,20 @@ public class Ball : MonoBehaviour
     }
      public void AquaBallOn()
         {
-            _fireBall.gameObject.SetActive(false);
-            isFireBall = false;
+        
+        _fireBall.gameObject.SetActive(false);
+        isFireBall = false;
 
-            _aquaBall.gameObject.SetActive(true);
-            isAquaBall = true;
+        _aquaBall.gameObject.SetActive(true);
+        isAquaBall = true;
 
-            _grassBall.gameObject.SetActive(false);
-            isGrassBall = false;
+        _grassBall.gameObject.SetActive(false);
+        isGrassBall = false;
         }
 
        public void GrassBallOn()
        {
+        
             _grassBall.gameObject.SetActive(true);
             isGrassBall = true;
 

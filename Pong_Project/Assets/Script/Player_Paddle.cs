@@ -36,6 +36,11 @@ public class Player_Paddle : Paddle
 
     public GameManager gm;
 
+    //SONS
+    public AudioClip danoClip;
+    public AudioClip magicActiveClip;
+    public AudioClip shatter1Clip;
+    public AudioClip shatter2Clip;
 
 
 
@@ -95,14 +100,6 @@ public class Player_Paddle : Paddle
             }
         }
         else { return; }
-
-        //Mostrar magias no ui
-        //if(gameManager != null)
-        //{
-           // var gm = gameManager.GetComponent<GameManager>();
-          //  gm.PlayerMagicDisplay();
-      //  }
-
 
     }
 
@@ -168,6 +165,7 @@ public class Player_Paddle : Paddle
 
     public void FirePaddleOn()
     {
+        AudioManager.instance.MagicAtive(magicActiveClip);
         isFirePaddle = true;
         firePaddle.SetActive(true);
 
@@ -180,6 +178,7 @@ public class Player_Paddle : Paddle
 
     public void AquaPaddleOn()
     {
+        AudioManager.instance.MagicAtive(magicActiveClip);
         isAquaPaddle = true;
         aquaPaddle.SetActive(true);
 
@@ -192,6 +191,7 @@ public class Player_Paddle : Paddle
 
     public void GrassPaddleOn()
     {
+        AudioManager.instance.MagicAtive(magicActiveClip);
         isGrassPaddle = true;
         grassPaddle.SetActive(true);
 
@@ -227,8 +227,18 @@ public class Player_Paddle : Paddle
     }
     public void TomouDano()
     {
+        AudioManager.instance.Dano(danoClip);
         Instantiate(floatingPoints, transform.position, Quaternion.identity);
+        if (hpPaddle == 3)
+        {
+            AudioManager.instance.Shatter(shatter1Clip);
+        }
+        if (hpPaddle == 2)
+        {
+            AudioManager.instance.Shatter(shatter2Clip);
+        }
         hpPaddle--;
+        
         
     }
 

@@ -32,11 +32,17 @@ public class GameManager : MonoBehaviour
     public GameObject countDown;
     public bool countdownIsCreated = false;
 
+    //SONS
+    public AudioSource musicBG;
+    public AudioClip sparkleClip;
+    public AudioClip loseClip;
+    public AudioClip winClip;
 
-  //=========================================================
+
+    //=========================================================
     void Start()
     {
-        
+        musicBG = GameObject.Find("BgMusic").GetComponent<AudioSource>();
         _startBTN = GameObject.Find("StartBtn").GetComponent<Button>();
         gameOverUI = GameObject.Find("GameOverPanel");
         quadroResult = GameObject.Find("QuemGanhou").GetComponent<Text>();
@@ -62,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void PlayerScore()
     {
         _playerScore++;
+        AudioManager.instance.Sparkle(sparkleClip);
         PlayerPrefs.SetInt("playerPlacar", _playerScore);
         this.playerScoreText.text = _playerScore.ToString();
         deuInicio = false;
@@ -70,6 +77,7 @@ public class GameManager : MonoBehaviour
     public void ComputerScore()
     {
         _computerScore++;
+        AudioManager.instance.Sparkle(loseClip);
         PlayerPrefs.SetInt("computerPlacar", _computerScore);
         this.computerScoreText.text = _computerScore.ToString();
         deuInicio = false;
@@ -79,27 +87,30 @@ public class GameManager : MonoBehaviour
     //FUNÇÃO PARA SABER SE ALGUEM GANHOU
     public void GameHasWinner()
     {
-        if (_computerScore == 5 )
+        if (_computerScore == 3 )
         {
             PlayerPrefs.SetInt("computerPlacar", _computerScore);
             PlayerPrefs.SetInt("playerPlacar", _playerScore);
-            _computerScore = 0;
-            _playerScore = 0;
             this.ball.ResetPosition();
-            PlayerPrefs.SetString("Resultado", "Lost");
-            isGameOver = true;
-            
-        }
-        if (_playerScore == 5)
-        {
-            PlayerPrefs.SetInt("computerPlacar", _computerScore);
-            PlayerPrefs.SetInt("playerPlacar", _playerScore);
-            _computerScore = 0;
-            _playerScore = 0;
-            this.ball.ResetPosition();
+
+            AudioManager.instance.Result(loseClip);
             PlayerPrefs.SetString("Resultado", "Winner!");
+            musicBG.Stop();
             isGameOver = true;
-            
+
+        }
+        if (_playerScore == 3)
+        {
+
+            AudioManager.instance.Result(winClip);
+            PlayerPrefs.SetInt("computerPlacar", _computerScore);
+            PlayerPrefs.SetInt("playerPlacar", _playerScore);
+            this.ball.ResetPosition();
+                    
+            PlayerPrefs.SetString("Resultado", "Winner!");
+            musicBG.Stop();
+            isGameOver = true;
+
         }
         else { return; }
 
@@ -159,6 +170,7 @@ public class GameManager : MonoBehaviour
             gameOverUI.SetActive(true);
             deuInicio = false;
             Time.timeScale = 0;
+            
         }
         if (isGameOver == false && deuInicio == false)
         {
@@ -177,8 +189,13 @@ public class GameManager : MonoBehaviour
     public void StartGameBtn()
     {
         isGameOver = false;
-         _playerScore = 0;
-        _computerScore = 0;
+        AudioManager.instance.Sparkle(sparkleClip);
+        musicBG.Play();
+
+        this._computerScore = 0;
+        this._playerScore = 0;
+        this.playerScoreText.text = _playerScore.ToString();
+        this.computerScoreText.text = _computerScore.ToString();
     }
 
     //UI: DISPLAY DE MAGIAS DO PLAYER
@@ -253,4 +270,6 @@ public class GameManager : MonoBehaviour
         }
         else { cgrassMagicOFF.enabled = false; }
     }
+
+
 }

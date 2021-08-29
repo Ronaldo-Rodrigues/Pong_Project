@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
     private Button _startBTN;
     public bool isGameOver = true;
     public bool deuInicio;
-
+    public Text quadroResult;
+    public Text placarResult;
 
     //OBJ PARA COUNTDOWN ANTES DE CADA RODADA
     public GameObject countDown;
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
         
         _startBTN = GameObject.Find("StartBtn").GetComponent<Button>();
         gameOverUI = GameObject.Find("GameOverPanel");
+        quadroResult = GameObject.Find("QuemGanhou").GetComponent<Text>();
+        placarResult = GameObject.Find("Ultimo Placar").GetComponent<Text>();
         deuInicio = false;
 
     }
@@ -47,6 +50,8 @@ public class GameManager : MonoBehaviour
         ComputerMagicDisplay();
         GameHasWinner();
         GameOverUI();
+       
+        
     }
 
 
@@ -57,6 +62,7 @@ public class GameManager : MonoBehaviour
     public void PlayerScore()
     {
         _playerScore++;
+        PlayerPrefs.SetInt("playerPlacar", _playerScore);
         this.playerScoreText.text = _playerScore.ToString();
         deuInicio = false;
         ResetRound();
@@ -64,6 +70,7 @@ public class GameManager : MonoBehaviour
     public void ComputerScore()
     {
         _computerScore++;
+        PlayerPrefs.SetInt("computerPlacar", _computerScore);
         this.computerScoreText.text = _computerScore.ToString();
         deuInicio = false;
         ResetRound();
@@ -72,11 +79,27 @@ public class GameManager : MonoBehaviour
     //FUNÇÃO PARA SABER SE ALGUEM GANHOU
     public void GameHasWinner()
     {
-        if (_computerScore == 3 || _playerScore == 3)
+        if (_computerScore == 5 )
         {
+            PlayerPrefs.SetInt("computerPlacar", _computerScore);
+            PlayerPrefs.SetInt("playerPlacar", _playerScore);
+            _computerScore = 0;
+            _playerScore = 0;
+            this.ball.ResetPosition();
+            PlayerPrefs.SetString("Resultado", "Lost");
             isGameOver = true;
             
-
+        }
+        if (_playerScore == 5)
+        {
+            PlayerPrefs.SetInt("computerPlacar", _computerScore);
+            PlayerPrefs.SetInt("playerPlacar", _playerScore);
+            _computerScore = 0;
+            _playerScore = 0;
+            this.ball.ResetPosition();
+            PlayerPrefs.SetString("Resultado", "Winner!");
+            isGameOver = true;
+            
         }
         else { return; }
 
@@ -95,7 +118,6 @@ public class GameManager : MonoBehaviour
         var findCountDown = GameObject.Find("CountDownParent(Clone)");
         if (findCountDown != null)
         {
-            
             Destroy(findCountDown.gameObject);
         }
         countdownIsCreated = false;
@@ -105,7 +127,6 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(countDown, new Vector2(0, 0), Quaternion.identity);
             countdownIsCreated = true;
-            
         }
         else { return; }
     }
@@ -122,7 +143,6 @@ public class GameManager : MonoBehaviour
         resetPlayer.PlayerPaddleReset();
     }
 
-
     //FORÇA INICIAL NA BOLA
     public void ForcaInicial()
     {
@@ -132,7 +152,6 @@ public class GameManager : MonoBehaviour
     //UI: DISPLAY DE GAMEOVER
     public void GameOverUI()
     {
-        
         _startBTN.onClick.AddListener(StartGameBtn);
         
         if (isGameOver == true)
@@ -145,18 +164,23 @@ public class GameManager : MonoBehaviour
         {
             gameOverUI.SetActive(false);
             Time.timeScale = 1;
-            ResetRound();
-            
+            ResetRound();  
         }
+
+
+        quadroResult.text = PlayerPrefs.GetString("Resultado").ToString();
+        placarResult.text = PlayerPrefs.GetInt("computerPlacar") + " x " + PlayerPrefs.GetInt("playerPlacar").ToString();
+
     }
+
+    //Botao de Start
     public void StartGameBtn()
     {
         isGameOver = false;
          _playerScore = 0;
         _computerScore = 0;
-        
- 
     }
+
     //UI: DISPLAY DE MAGIAS DO PLAYER
     public void PlayerMagicDisplay()
     {

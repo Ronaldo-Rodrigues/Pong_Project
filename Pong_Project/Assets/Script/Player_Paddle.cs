@@ -223,12 +223,10 @@ public class Player_Paddle : Paddle
         prolongBroke.SetActive(false);
         MagicPaddleOff();
         this.transform.position = new Vector2(transform.position.x, 0);
-         
-        
+
     }
     public void TomouDano()
     {
-      
         Instantiate(floatingPoints, transform.position, Quaternion.identity);
         hpPaddle--;
         

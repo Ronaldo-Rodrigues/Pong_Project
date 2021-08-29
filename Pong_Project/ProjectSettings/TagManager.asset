@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Computer Paddle
   - Count Down
+  - Game Over
   layers:
   - Default
   - TransparentFX

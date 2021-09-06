@@ -304,7 +304,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5836d29d70d6a9849a3204c1dcd931c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d03d01898d1a9c94794310a659f1ffdd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -426,7 +426,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.96}
+    oldSize: {x: 0.17, y: 0.96}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -570,9 +570,10 @@ MonoBehaviour:
   canCastFire: 1
   canCastAqua: 1
   canCastGrass: 1
-  danoSom: {fileID: 8300000, guid: 71656438e55e1934f84ccfa49ae9423b, type: 3}
-  shatter1: {fileID: 8300000, guid: 41e12bbec702e954d89428c1d4c947ca, type: 3}
-  shatter2: {fileID: 8300000, guid: 280a30bc0ffda2a4ab9287a3bd997911, type: 3}
+  danoClip: {fileID: 8300000, guid: 71656438e55e1934f84ccfa49ae9423b, type: 3}
+  magicActiveClip: {fileID: 8300000, guid: de39deb1c04a8ec428bc7a1b5d9fd12c, type: 3}
+  shatter1Clip: {fileID: 8300000, guid: 41e12bbec702e954d89428c1d4c947ca, type: 3}
+  shatter2Clip: {fileID: 8300000, guid: 280a30bc0ffda2a4ab9287a3bd997911, type: 3}
 --- !u!114 &164767337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1787,7 +1788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dd331fae13649b4439ecbfcc8f2332f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed9bf7529d2367042a221eb872076f44, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1856,9 +1857,9 @@ MonoBehaviour:
     type: 3}
   countdownIsCreated: 0
   musicBG: {fileID: 8300000, guid: 1733645ecda0f654a9facb1167906c16, type: 3}
-  startSom: {fileID: 8300000, guid: 8a5e2de65ca600f49af48c9d9e178762, type: 3}
-  loseSom: {fileID: 8300000, guid: 167a2896763f0354dbc9ea647a04e906, type: 3}
-  winSom: {fileID: 8300000, guid: 0c292834716cdfc468832c5483a3d12c, type: 3}
+  sparkleClip: {fileID: 8300000, guid: 8a5e2de65ca600f49af48c9d9e178762, type: 3}
+  loseClip: {fileID: 8300000, guid: 167a2896763f0354dbc9ea647a04e906, type: 3}
+  winClip: {fileID: 8300000, guid: 0c292834716cdfc468832c5483a3d12c, type: 3}
 --- !u!4 &591357107
 Transform:
   m_ObjectHideFlags: 0
@@ -1929,7 +1930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5836d29d70d6a9849a3204c1dcd931c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d03d01898d1a9c94794310a659f1ffdd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2084,7 +2085,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 935c9ee4f637b1d4ab6e7a0be1ddbc2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 636ea93ebc49feb42a7235bd470cfb47, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2578,13 +2579,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5836d29d70d6a9849a3204c1dcd931c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 168d82e5a92808d48b0f675421328b1e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2652,13 +2653,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dd331fae13649b4439ecbfcc8f2332f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 168d82e5a92808d48b0f675421328b1e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2992,13 +2993,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 935c9ee4f637b1d4ab6e7a0be1ddbc2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 168d82e5a92808d48b0f675421328b1e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3251,13 +3252,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5836d29d70d6a9849a3204c1dcd931c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 168d82e5a92808d48b0f675421328b1e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3617,13 +3618,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 935c9ee4f637b1d4ab6e7a0be1ddbc2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 168d82e5a92808d48b0f675421328b1e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3758,7 +3759,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1632573660}
-  - component: {fileID: 1632573662}
   - component: {fileID: 1632573661}
   m_Layer: 0
   m_Name: AudioManager
@@ -3793,103 +3793,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879993b35cabfbf47ae94278fc29bf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sons: {fileID: 1632573662}
---- !u!82 &1632573662
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632573659}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 152
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  somDano: {fileID: 0}
+  somScore: {fileID: 0}
+  somHit: {fileID: 0}
+  somSparkle: {fileID: 0}
+  somResult: {fileID: 0}
+  somBreak: {fileID: 0}
+  somBolaMagic: {fileID: 0}
+  somGrass: {fileID: 0}
+  somAqua: {fileID: 0}
+  somGlass: {fileID: 0}
+  somMagicAtive: {fileID: 0}
 --- !u!1 &1650065228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,7 +3860,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 935c9ee4f637b1d4ab6e7a0be1ddbc2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 636ea93ebc49feb42a7235bd470cfb47, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4051,7 +3965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dd331fae13649b4439ecbfcc8f2332f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed9bf7529d2367042a221eb872076f44, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4107,7 +4021,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.96}
+    oldSize: {x: 0.17, y: 0.96}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4250,9 +4164,10 @@ MonoBehaviour:
   canCastAqua: 1
   canCastGrass: 1
   gm: {fileID: 591357106}
-  magicSwich: {fileID: 8300000, guid: de39deb1c04a8ec428bc7a1b5d9fd12c, type: 3}
-  shatter1: {fileID: 8300000, guid: 41e12bbec702e954d89428c1d4c947ca, type: 3}
-  shatter2: {fileID: 8300000, guid: 280a30bc0ffda2a4ab9287a3bd997911, type: 3}
+  danoClip: {fileID: 8300000, guid: ec72b8a043ebbe445a8e10de3c5c7060, type: 3}
+  magicActiveClip: {fileID: 8300000, guid: de39deb1c04a8ec428bc7a1b5d9fd12c, type: 3}
+  shatter1Clip: {fileID: 8300000, guid: 41e12bbec702e954d89428c1d4c947ca, type: 3}
+  shatter2Clip: {fileID: 8300000, guid: 280a30bc0ffda2a4ab9287a3bd997911, type: 3}
 --- !u!114 &1782743895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4657,13 +4572,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dd331fae13649b4439ecbfcc8f2332f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 168d82e5a92808d48b0f675421328b1e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

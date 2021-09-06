@@ -23,10 +23,16 @@
 -Cena Inicial de Play
 
 
+-Implementar soundFX
+
+-Implementar BG Music
+
+-Melhorar estetica geral do jogo (polish).
+	-Melhorar estetica da UI de magias
 
 ========== Fazendo ==========
 
--Implementar soundFX
+	
 
 
 =
@@ -34,15 +40,19 @@
 
 
 ========== Fazer ==========
-========== Post Processing ==========
+	-Melhorar estetica da UI de magias
+	-Implementar camera Shake
 
 
--Implementar camera Shake
-
--Implementar BG Music
-
--Melhorar estetica geral do jogo
-
+	-Melhoria da estetica da magia das bolas
+	-Melhoria da estetica dos pedais com magia
+	-Melhoria da estetica do cenario
+	-Melhoria da estetica dos Magos;
+	-Animação da bola
+	-Animação dos pedais
+	-Animações de impacto da bola
+	-Animação dos maguinhos
+-Arrumar Alguns bugs de sons
 
 ====Scripts====
 

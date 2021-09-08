@@ -34,7 +34,7 @@
 	-Melhoria da estetica do cenario
 ========== Fazendo ==========
 
-
+-Melhoria da estetica dos Magos;
 
 
 =
@@ -46,13 +46,9 @@
 	-Implementar camera Shake
 
 
-	
-	
-	
-	-Melhoria da estetica dos Magos;
+	-Animações de impacto da bola
 	-Animação da bola
 	-Animação dos pedais
-	-Animações de impacto da bola
 	-Animação dos maguinhos
 -Arrumar Alguns bugs de sons
 

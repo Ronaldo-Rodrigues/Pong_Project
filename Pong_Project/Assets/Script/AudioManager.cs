@@ -33,6 +33,7 @@ public class AudioManager : MonoBehaviour
             somGlass = gameObject.AddComponent<AudioSource>();
             somGlass.clip = clipAudio;
             somGlass.Play();
+            
         }
         if (somGlass!= null)
         {

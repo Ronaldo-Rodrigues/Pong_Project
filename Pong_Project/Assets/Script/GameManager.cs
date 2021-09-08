@@ -56,8 +56,12 @@ public class GameManager : MonoBehaviour
         ComputerMagicDisplay();
         GameHasWinner();
         GameOverUI();
+
        
-        
+        if (deuInicio == false && Input.GetKey(KeyCode.Space))
+        {
+            StartGameBtn();
+        }
     }
 
 
@@ -102,7 +106,7 @@ public class GameManager : MonoBehaviour
         if (_playerScore == 3)
         {
 
-            AudioManager.instance.Result(winClip);
+           
             PlayerPrefs.SetInt("computerPlacar", _computerScore);
             PlayerPrefs.SetInt("playerPlacar", _playerScore);
             this.ball.ResetPosition();
@@ -110,6 +114,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("Resultado", "Winner!");
             musicBG.Stop();
             isGameOver = true;
+            AudioManager.instance.Result(winClip);
 
         }
         else { return; }
@@ -164,6 +169,7 @@ public class GameManager : MonoBehaviour
     public void GameOverUI()
     {
         _startBTN.onClick.AddListener(StartGameBtn);
+    
         
         if (isGameOver == true)
         {

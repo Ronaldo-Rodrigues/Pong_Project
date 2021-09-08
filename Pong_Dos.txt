@@ -30,9 +30,11 @@
 -Melhorar estetica geral do jogo (polish).
 	-Melhorar estetica da UI de magias
 	-Melhoria da estetica da magia das bolas
+	-Melhoria da estetica dos pedais com magia
+	-Melhoria da estetica do cenario
 ========== Fazendo ==========
 
-	-Melhoria da estetica dos pedais com magia
+
 
 
 =
@@ -46,7 +48,7 @@
 
 	
 	
-	-Melhoria da estetica do cenario
+	
 	-Melhoria da estetica dos Magos;
 	-Animação da bola
 	-Animação dos pedais

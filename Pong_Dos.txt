@@ -34,6 +34,7 @@
 	-Melhoria da estetica do cenario
 	-Melhoria da estetica dos Magos;
 	-Sprites de pedal quebrando
+	-Sprite de transformação de pedais
 ========== Fazendo ==========
 
 	-Animações de impacto da bola
@@ -49,7 +50,7 @@
 
 
 
-	-Animação da bola
+	-Animação das bolas magicas
 	-Animação dos pedais
 	-Animação dos maguinhos
 -Arrumar Alguns bugs de sons

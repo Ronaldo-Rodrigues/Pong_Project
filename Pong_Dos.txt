@@ -32,9 +32,11 @@
 	-Melhoria da estetica da magia das bolas
 	-Melhoria da estetica dos pedais com magia
 	-Melhoria da estetica do cenario
+	-Melhoria da estetica dos Magos;
+	-Sprites de pedal quebrando
 ========== Fazendo ==========
 
--Melhoria da estetica dos Magos;
+	-Animações de impacto da bola
 
 
 =
@@ -46,7 +48,7 @@
 	-Implementar camera Shake
 
 
-	-Animações de impacto da bola
+
 	-Animação da bola
 	-Animação dos pedais
 	-Animação dos maguinhos

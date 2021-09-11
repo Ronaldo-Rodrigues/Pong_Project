@@ -32,6 +32,8 @@ public class Player_Paddle : Paddle
     public GameObject grassPaddle;
     public GameObject grassMagicOnAnim;
 
+    public GameObject paddleShreding;
+
     public bool canCastMagic = true;
     public bool canCastFire = true;
     public bool canCastAqua = true;
@@ -241,6 +243,7 @@ public class Player_Paddle : Paddle
         }
         if (hpPaddle == 2)
         {
+            Instantiate(paddleShreding, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             AudioManager.instance.Shatter(shatter2Clip);
         }
         hpPaddle--;

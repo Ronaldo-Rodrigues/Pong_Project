@@ -17,12 +17,17 @@ public class Computer_Padle : Paddle
 
     public bool isFirePaddle = false;
     public GameObject firePaddle;
+    public GameObject fireMagicOnAnim;
 
     public bool isAquaPaddle = false;
     public GameObject aquaPaddle;
+    public GameObject aquaMagicOnAnim;
 
     public bool isGrassPaddle = false;
     public GameObject grassPaddle;
+    public GameObject grassMagicOnAnim;
+
+    public GameObject paddleShreding;
 
     public bool canCastMagic = true;
     public bool canCastFire = true;
@@ -79,11 +84,13 @@ public class Computer_Padle : Paddle
            {
               if(this.canCastMagic == true && canCastAqua == true)
               {
-                   StartCoroutine(AquaCombatOn());
+                   
+                    StartCoroutine(AquaCombatOn());
               }
               else if(this.canCastMagic == true && canCastAqua == false && canCastFire == true)
               {
-                   StartCoroutine(FireCombatOn());
+                   
+                    StartCoroutine(FireCombatOn());
               }
               else { return; }
 
@@ -92,11 +99,13 @@ public class Computer_Padle : Paddle
            {
                if (this.canCastMagic == true && canCastGrass == true)
                {
-                   StartCoroutine(GrassCombatOn());
+                   
+                    StartCoroutine(GrassCombatOn());
                }
                else if (this.canCastMagic == true && canCastGrass == false && canCastAqua == true)
                {
-                   StartCoroutine(AquaCombatOn());
+                    
+                    StartCoroutine(AquaCombatOn());
                }
                else { return; }
            }
@@ -104,11 +113,13 @@ public class Computer_Padle : Paddle
            {
                if (this.canCastMagic == true && canCastFire == true)
                {
-                   StartCoroutine(FireCombatOn());
+                    
+                    StartCoroutine(FireCombatOn());
                }
                else if (this.canCastMagic == true && canCastFire == false && canCastGrass == true)
                {
-                   StartCoroutine(GrassCombatOn());
+                   
+                    StartCoroutine(GrassCombatOn());
                }
                else { return; }
 
@@ -178,6 +189,7 @@ public class Computer_Padle : Paddle
     {
         canCastMagic = false;
         yield return new WaitForSeconds(1);
+        Instantiate(fireMagicOnAnim, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         FirePaddleOn();
         
         canCastFire = false;
@@ -203,6 +215,7 @@ public class Computer_Padle : Paddle
     {
         canCastMagic = false;
         yield return new WaitForSeconds(1);
+        Instantiate(aquaMagicOnAnim, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         AquaPaddleOn();
         canCastAqua = false;
         yield return new WaitForSeconds(4);
@@ -226,6 +239,7 @@ public class Computer_Padle : Paddle
     {
         canCastMagic = false;
         yield return new WaitForSeconds(1);
+        Instantiate(grassMagicOnAnim, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         GrassPaddleOn();
         
         canCastGrass = false;
@@ -270,6 +284,7 @@ public class Computer_Padle : Paddle
         }
         if (hpPaddle == 2)
         {
+            Instantiate(paddleShreding, new Vector2(transform.position.x, transform.position.y), this.transform.rotation);
             AudioManager.instance.Shatter(shatter2Clip);
         }
         hpPaddle--;

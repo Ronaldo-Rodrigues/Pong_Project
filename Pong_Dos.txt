@@ -35,9 +35,12 @@
 	-Melhoria da estetica dos Magos;
 	-Sprites de pedal quebrando
 	-Sprite de transformação de pedais
+	-Animações de impacto da bola
+	-Animação dos pedais Magicos
+	-Animação das bolas magicas
 ========== Fazendo ==========
 
-	-Animações de impacto da bola
+	
 
 
 =
@@ -50,9 +53,10 @@
 
 
 
-	-Animação das bolas magicas
-	-Animação dos pedais
+	
+	
 	-Animação dos maguinhos
+
 -Arrumar Alguns bugs de sons
 
 ====Scripts====

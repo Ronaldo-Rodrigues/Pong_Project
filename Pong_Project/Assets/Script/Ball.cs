@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    [SerializeField]
     private Rigidbody2D _rb;
     private Object _impactRef;
     public float speed = 200.0f;

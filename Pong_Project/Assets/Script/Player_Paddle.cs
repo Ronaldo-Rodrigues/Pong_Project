@@ -22,12 +22,15 @@ public class Player_Paddle : Paddle
 
     public bool isFirePaddle = false;
     public GameObject firePaddle;
+    public GameObject fireMagicOnAnim;
 
     public bool isAquaPaddle = false;
     public GameObject aquaPaddle;
+    public GameObject aquaMagicOnAnim;
 
     public bool isGrassPaddle = false;
     public GameObject grassPaddle;
+    public GameObject grassMagicOnAnim;
 
     public bool canCastMagic = true;
     public bool canCastFire = true;
@@ -76,6 +79,7 @@ public class Player_Paddle : Paddle
             //Fire
             if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
             {
+                Instantiate(fireMagicOnAnim, new Vector2 ( transform.position.x, transform.position.y), Quaternion.identity);
                 FirePaddleOn();
                 StartCoroutine(FireMagicWait());
             }
@@ -85,6 +89,7 @@ public class Player_Paddle : Paddle
             //Aqua
             if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
             {
+                Instantiate(grassMagicOnAnim, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
                 GrassPaddleOn();
                 StartCoroutine(GrassMagicWait());
                
@@ -95,6 +100,7 @@ public class Player_Paddle : Paddle
             //grass
             if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
             {
+                Instantiate(aquaMagicOnAnim, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
                 AquaPaddleOn();
                 StartCoroutine(AquaMagicWait());
             }

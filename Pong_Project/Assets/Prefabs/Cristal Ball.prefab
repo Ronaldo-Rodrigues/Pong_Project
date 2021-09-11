@@ -321,6 +321,7 @@ MonoBehaviour:
   aquaBallClip: {fileID: 8300000, guid: 81866071ad49c804582dfb22f01c00a5, type: 3}
   grassBallClip: {fileID: 8300000, guid: 83d9c2a921e02814ca024f679643d848, type: 3}
   glassBallClip: {fileID: 8300000, guid: 4c4f65a7cc5c34145bc4e66ca4d9e2e9, type: 3}
+  magicBallClip: {fileID: 8300000, guid: cef4240e474dba945a3384f2f97ef1e7, type: 3}
   hitClip: {fileID: 8300000, guid: 4c4f65a7cc5c34145bc4e66ca4d9e2e9, type: 3}
 --- !u!95 &7444586085244975145
 Animator:

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D _rb;
-
+    private Object _impactRef;
     public float speed = 200.0f;
 
     [SerializeField]
@@ -29,6 +29,7 @@ public class Ball : MonoBehaviour
     public AudioClip aquaBallClip;
     public AudioClip grassBallClip;
     public AudioClip glassBallClip;
+    public AudioClip magicBallClip;
     public AudioClip hitClip;
 
     private void Awake()
@@ -37,6 +38,7 @@ public class Ball : MonoBehaviour
         _aquaBall.SetActive(false);
         _grassBall.SetActive(false);
         _rb = GetComponent<Rigidbody2D>();
+        _impactRef = Resources.Load("Ball_Impact");
     }
 
 
@@ -67,7 +69,19 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        AudioManager.instance.GlassBall(glassBallClip);
+        GameObject hitEffect = (GameObject)Instantiate(_impactRef);
+        hitEffect.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        //Som de IMPACTO
+        if(this.isAquaBall == false && this.isFireBall == false && this.isGrassBall == false)
+        {
+            AudioManager.instance.GlassBall(glassBallClip);
+        }
+        else
+        {
+            AudioManager.instance.GlassBall(magicBallClip);
+        }
+       
         //Collision com player
         if (collision.gameObject.CompareTag("Player Paddle"))
         {

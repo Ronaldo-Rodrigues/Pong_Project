@@ -12,7 +12,7 @@ public class Player_Paddle : Paddle
 
     public GameObject floatingPoints;
 
- 
+    public Animator maguinhoAnim;
 
    // public GameObject gameManager;
 
@@ -60,14 +60,14 @@ public class Player_Paddle : Paddle
         //Movimento
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            
+            maguinhoAnim.SetBool("isDown", false);
             _direction = Vector2.up;
             
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
             _direction = Vector2.down;
-            
+            maguinhoAnim.SetBool("isDown", true);
         }
         else
         {
@@ -108,6 +108,13 @@ public class Player_Paddle : Paddle
             }
         }
         else { return; }
+
+
+    
+     if (this._rb.velocity.y > -2.3f)
+        {
+            maguinhoAnim.SetBool("isDown", false);
+        }
 
     }
 

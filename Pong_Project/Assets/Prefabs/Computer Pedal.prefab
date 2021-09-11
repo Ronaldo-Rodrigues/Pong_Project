@@ -549,6 +549,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  maguinhoAnim: {fileID: 3795863043654189519}
   ball: {fileID: 0}
   floatingPoints: {fileID: 7563857823592370701, guid: 745e836a92665a847a054057142852db,
     type: 3}
@@ -558,10 +559,18 @@ MonoBehaviour:
   hpPaddle: 3
   isFirePaddle: 0
   firePaddle: {fileID: 7184439576490417875}
+  fireMagicOnAnim: {fileID: 4812861326416192508, guid: bdce449c95b41b44c8defb29ad902f1c,
+    type: 3}
   isAquaPaddle: 0
   aquaPaddle: {fileID: 5485523397567538340}
+  aquaMagicOnAnim: {fileID: 3274724057676235672, guid: 8a88e3f156042ed4eaa115e644e080eb,
+    type: 3}
   isGrassPaddle: 0
   grassPaddle: {fileID: 2801528421367801413}
+  grassMagicOnAnim: {fileID: 8754317569990365476, guid: 9afb40bc91777154abfc0a77c7e1598f,
+    type: 3}
+  paddleShreding: {fileID: 780009213211595084, guid: 620fc6e0bb375bc45bde73e25bad4a8e,
+    type: 3}
   canCastMagic: 1
   canCastFire: 1
   canCastAqua: 1
@@ -873,7 +882,7 @@ PrefabInstance:
     - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
         type: 3}
@@ -935,6 +944,12 @@ PrefabInstance:
 --- !u!4 &7653822828875888102 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
+    type: 3}
+  m_PrefabInstance: {fileID: 8526888919544159190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3795863043654189519 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4825612602131241497, guid: 02c63c0ef51814d4480cff71b8017a26,
     type: 3}
   m_PrefabInstance: {fileID: 8526888919544159190}
   m_PrefabAsset: {fileID: 0}

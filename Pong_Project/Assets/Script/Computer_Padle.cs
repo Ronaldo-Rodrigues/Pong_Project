@@ -7,6 +7,10 @@ public class Computer_Padle : Paddle
 {
     public EventTrigger.TriggerEvent scoreTrigger;
 
+    
+    [SerializeField]
+    public Animator maguinhoAnim;
+
     public Rigidbody2D ball;
     public GameObject floatingPoints;
     public GameObject playerMagic;
@@ -44,6 +48,8 @@ public class Computer_Padle : Paddle
     {
        
         playerMagic = GameObject.FindGameObjectWithTag("Player Paddle");
+        _rb = GetComponent<Rigidbody2D>();
+        
         ResetCompPaddle();
 
     }
@@ -125,11 +131,22 @@ public class Computer_Padle : Paddle
 
            }
         }
+        
+        if (this._rb.velocity.y < -0.5f)
+        {
+            maguinhoAnim.SetBool("isDown", true);
+        }
+        else
+        {
+            maguinhoAnim.SetBool("isDown", false);
+        }
 
     }
 
         private void FixedUpdate()
     {
+
+      
 
         if (this.ball.velocity.x < 0.0f)
         {

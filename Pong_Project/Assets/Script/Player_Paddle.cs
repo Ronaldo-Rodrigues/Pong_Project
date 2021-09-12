@@ -10,12 +10,11 @@ public class Player_Paddle : Paddle
 
     private Vector2 _direction;
 
-    public GameObject floatingPoints;
+    
 
     public Animator maguinhoAnim;
 
-   // public GameObject gameManager;
-
+   
     public GameObject prolongPaddle;
     public GameObject prolongBroke;
     public int hpPaddle = 3;
@@ -57,23 +56,29 @@ public class Player_Paddle : Paddle
     }
     void Update()
     {
-        //Movimento
+        //Movimento e animação
         if (Input.GetKey(KeyCode.UpArrow))
         {
+           _direction = Vector2.up;
             maguinhoAnim.SetBool("isDown", false);
-            _direction = Vector2.up;
-            
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            _direction = Vector2.down;
-            maguinhoAnim.SetBool("isDown", true);
+            _direction = Vector2.down;            
         }
         else
         {
-            _direction = Vector2.zero;
+             _direction = Vector2.zero;
         }
-
+       //animação de maguinho
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            maguinhoAnim.SetBool("isDown", true);
+        }
+        if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.DownArrow))
+        {
+            maguinhoAnim.SetBool("isDown", false);
+        }
 
         // ativar as magias
         if (canCastMagic == true && canCastFire == true)
@@ -109,13 +114,13 @@ public class Player_Paddle : Paddle
         }
         else { return; }
 
-
     
-     if (this._rb.velocity.y > -2.3f)
+    
+        if(this.transform.position.y < -0.1f)
         {
-            maguinhoAnim.SetBool("isDown", false);
+           
         }
-
+        
     }
 
     private void FixedUpdate()
@@ -242,8 +247,9 @@ public class Player_Paddle : Paddle
     }
     public void TomouDano()
     {
+        gm.ShakeIt();
         AudioManager.instance.Dano(danoClip);
-        Instantiate(floatingPoints, transform.position, Quaternion.identity);
+        
         if (hpPaddle == 3)
         {
             AudioManager.instance.Shatter(shatter1Clip);
@@ -253,9 +259,7 @@ public class Player_Paddle : Paddle
             Instantiate(paddleShreding, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             AudioManager.instance.Shatter(shatter2Clip);
         }
-        hpPaddle--;
-        
-        
+        hpPaddle--;   
     }
-
+   
 }

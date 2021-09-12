@@ -204,7 +204,7 @@ MonoBehaviour:
   canCastAqua: 1
   canCastGrass: 1
   gm: {fileID: 0}
-  danoClip: {fileID: 8300000, guid: ec72b8a043ebbe445a8e10de3c5c7060, type: 3}
+  danoClip: {fileID: 8300000, guid: a8649049ec18e8145bf7a892aa12b50d, type: 3}
   magicActiveClip: {fileID: 8300000, guid: de39deb1c04a8ec428bc7a1b5d9fd12c, type: 3}
   shatter1Clip: {fileID: 8300000, guid: 41e12bbec702e954d89428c1d4c947ca, type: 3}
   shatter2Clip: {fileID: 8300000, guid: 280a30bc0ffda2a4ab9287a3bd997911, type: 3}
@@ -819,7 +819,7 @@ PrefabInstance:
     - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2045284060053958192, guid: 02c63c0ef51814d4480cff71b8017a26,
         type: 3}

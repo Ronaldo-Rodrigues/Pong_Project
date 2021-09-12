@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
    
     //FUNÇÕES SÃO CHAMADAS PELOS SCRIPTS QUE POSSUEM OS AUDIOCLIPS
@@ -120,14 +121,17 @@ public class AudioManager : MonoBehaviour
     //RESULT SOM
     public void Result(AudioClip clipAudio)
     {
+        
         if (somResult == null)
         {
             somResult = gameObject.AddComponent<AudioSource>();
+            
             somResult.clip = clipAudio;
             somResult.Play();
         }
         if (somResult != null)
         {
+            
             somResult.clip = clipAudio;
             somResult.Play();
         }

@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
     public AudioClip loseClip;
     public AudioClip winClip;
 
+    //CAMERA SHAKE
+    Vector3 _cameraInicialPosition;
+    public float shakeMagnetude = 0.05f, shakeTime = 0.5f;
+    public Camera mainCamara;
+
 
     //=========================================================
     void Start()
@@ -62,6 +67,7 @@ public class GameManager : MonoBehaviour
         {
             StartGameBtn();
         }
+
     }
 
 
@@ -81,6 +87,7 @@ public class GameManager : MonoBehaviour
     public void ComputerScore()
     {
         _computerScore++;
+
         AudioManager.instance.Sparkle(loseClip);
         PlayerPrefs.SetInt("computerPlacar", _computerScore);
         this.computerScoreText.text = _computerScore.ToString();
@@ -97,7 +104,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("playerPlacar", _playerScore);
             this.ball.ResetPosition();
 
-            AudioManager.instance.Result(loseClip);
+           
             PlayerPrefs.SetString("Resultado", "Winner!");
             musicBG.Stop();
             isGameOver = true;
@@ -105,16 +112,14 @@ public class GameManager : MonoBehaviour
         }
         if (_playerScore == 3)
         {
-
-           
             PlayerPrefs.SetInt("computerPlacar", _computerScore);
             PlayerPrefs.SetInt("playerPlacar", _playerScore);
             this.ball.ResetPosition();
                     
             PlayerPrefs.SetString("Resultado", "Winner!");
-            musicBG.Stop();
+            
             isGameOver = true;
-            AudioManager.instance.Result(winClip);
+            musicBG.Stop();
 
         }
         else { return; }
@@ -169,14 +174,12 @@ public class GameManager : MonoBehaviour
     public void GameOverUI()
     {
         _startBTN.onClick.AddListener(StartGameBtn);
-    
-        
+        AudioManager.instance.Result(winClip); 
         if (isGameOver == true)
         {
             gameOverUI.SetActive(true);
-            deuInicio = false;
+            deuInicio = false;        
             Time.timeScale = 0;
-            
         }
         if (isGameOver == false && deuInicio == false)
         {
@@ -185,8 +188,7 @@ public class GameManager : MonoBehaviour
             ResetRound();  
         }
 
-
-        quadroResult.text = PlayerPrefs.GetString("Resultado").ToString();
+            quadroResult.text = PlayerPrefs.GetString("Resultado").ToString();
         placarResult.text = PlayerPrefs.GetInt("computerPlacar") + " x " + PlayerPrefs.GetInt("playerPlacar").ToString();
 
     }
@@ -277,5 +279,25 @@ public class GameManager : MonoBehaviour
         else { cgrassMagicOFF.enabled = false; }
     }
 
-
+    //EFEITOS DE CAMERA SHAKE
+    public void ShakeIt()
+    {
+        _cameraInicialPosition = mainCamara.transform.position;
+        InvokeRepeating("StartCameraShaking", 0f, 0.08f);
+        Invoke("StopCameraShaking", shakeTime);
+    }
+    void StartCameraShaking()
+    {
+        float cameraShakingOffsetX = Random.value * shakeMagnetude * 2f - shakeMagnetude;
+        float cameraShakingOffsetY = 0.52f * shakeMagnetude * 2f - shakeMagnetude;
+        Vector3 cameraIntermediatePosition = mainCamara.transform.position;
+        cameraIntermediatePosition.x += cameraShakingOffsetX;
+        cameraIntermediatePosition.y += cameraShakingOffsetY;
+        mainCamara.transform.position = cameraIntermediatePosition;
+    }
+    void StopCameraShaking()
+    {
+        CancelInvoke("StartCameraShaking");
+        mainCamara.transform.position = _cameraInicialPosition;
+    }
 }

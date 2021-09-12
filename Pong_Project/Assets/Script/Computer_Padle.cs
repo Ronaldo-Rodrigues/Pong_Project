@@ -12,7 +12,7 @@ public class Computer_Padle : Paddle
     public Animator maguinhoAnim;
 
     public Rigidbody2D ball;
-    public GameObject floatingPoints;
+ 
     public GameObject playerMagic;
 
     public GameObject prolongPaddle;
@@ -37,6 +37,8 @@ public class Computer_Padle : Paddle
     public bool canCastFire = true;
     public bool canCastAqua = true;
     public bool canCastGrass = true;
+
+    public GameManager gm;
 
     //sons
     public AudioClip danoClip;
@@ -293,8 +295,9 @@ public class Computer_Padle : Paddle
 
     public void TomouDano()
     {
+        gm.ShakeIt();
         AudioManager.instance.Dano(danoClip);
-        Instantiate(floatingPoints, transform.position, Quaternion.identity);
+       
         if (hpPaddle == 3)
         {
             AudioManager.instance.Shatter(shatter1Clip);

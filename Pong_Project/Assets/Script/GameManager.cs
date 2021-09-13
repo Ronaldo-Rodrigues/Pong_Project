@@ -174,10 +174,11 @@ public class GameManager : MonoBehaviour
     public void GameOverUI()
     {
         _startBTN.onClick.AddListener(StartGameBtn);
-        AudioManager.instance.Result(winClip); 
+        
         if (isGameOver == true)
         {
             gameOverUI.SetActive(true);
+           
             deuInicio = false;        
             Time.timeScale = 0;
         }
@@ -299,5 +300,11 @@ public class GameManager : MonoBehaviour
     {
         CancelInvoke("StartCameraShaking");
         mainCamara.transform.position = _cameraInicialPosition;
+    }
+
+    //EXIT GAME
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

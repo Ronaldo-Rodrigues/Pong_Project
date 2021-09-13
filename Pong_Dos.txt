@@ -27,7 +27,7 @@
 
 -Implementar BG Music
 
--Melhorar estetica geral do jogo (polish).
+-Melhorar estetica geral do jogo (polishing).
 	-Melhorar estetica da UI de magias
 	-Melhoria da estetica da magia das bolas
 	-Melhoria da estetica dos pedais com magia
@@ -37,10 +37,12 @@
 	-Sprite de transformação de pedais
 	-Animações de impacto da bola
 	-Animação dos pedais Magicos
-	-Animação das bolas magicas
-========== Fazendo ==========
+	-Animação dos maguinhos
+-Implementar camera Shake
 
-	
+
+
+========== Fazendo ==========
 
 
 =
@@ -49,14 +51,7 @@
 
 ========== Fazer ==========
 	
-	-Implementar camera Shake
-
-
-
 	
-	
-	-Animação dos maguinhos
-
 -Arrumar Alguns bugs de sons
 
 ====Scripts====

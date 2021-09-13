@@ -25,6 +25,12 @@ public class Ball : MonoBehaviour
 
     public bool playerTouch;
 
+    public GameObject luzAmarela;
+    public GameObject luzVerde;
+    public GameObject luzAzul;
+    public GameObject luzBranca;
+
+
     //sons
     public AudioClip fireBallClip;
     public AudioClip aquaBallClip;
@@ -40,6 +46,9 @@ public class Ball : MonoBehaviour
         _grassBall.SetActive(false);
         _rb = GetComponent<Rigidbody2D>();
         _impactRef = Resources.Load("Ball_Impact");
+        luzAmarela.SetActive(false);
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(false);
     }
 
 
@@ -219,7 +228,11 @@ public class Ball : MonoBehaviour
     }
     public void FireBallOn()
     {
-        
+        luzBranca.SetActive(false);
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(true);
+
         _fireBall.gameObject.SetActive(true);
         isFireBall = true;
 
@@ -231,7 +244,11 @@ public class Ball : MonoBehaviour
     }
      public void AquaBallOn()
         {
-        
+        luzBranca.SetActive(false);
+        luzAzul.SetActive(true);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(false);
+
         _fireBall.gameObject.SetActive(false);
         isFireBall = false;
 
@@ -244,8 +261,12 @@ public class Ball : MonoBehaviour
 
        public void GrassBallOn()
        {
-        
-            _grassBall.gameObject.SetActive(true);
+        luzBranca.SetActive(false);
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(true);
+        luzAmarela.SetActive(false);
+
+        _grassBall.gameObject.SetActive(true);
             isGrassBall = true;
 
             _fireBall.gameObject.SetActive(false);
@@ -256,6 +277,11 @@ public class Ball : MonoBehaviour
        }
        public void MagicOff()
        {
+        luzBranca.SetActive(true);
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(false);
+
             _grassBall.gameObject.SetActive(false);
             isGrassBall = false;
 

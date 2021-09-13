@@ -46,6 +46,11 @@ public class Player_Paddle : Paddle
     public AudioClip shatter1Clip;
     public AudioClip shatter2Clip;
 
+    //Luzes
+    public GameObject luzAzul;
+    public GameObject luzVerde;
+    public GameObject luzAmarela;
+
 
 
     private void Start()
@@ -186,6 +191,11 @@ public class Player_Paddle : Paddle
     public void FirePaddleOn()
     {
         AudioManager.instance.MagicAtive(magicActiveClip);
+
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(true);
+
         isFirePaddle = true;
         firePaddle.SetActive(true);
 
@@ -199,6 +209,11 @@ public class Player_Paddle : Paddle
     public void AquaPaddleOn()
     {
         AudioManager.instance.MagicAtive(magicActiveClip);
+
+        luzAzul.SetActive(true);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(false);
+
         isAquaPaddle = true;
         aquaPaddle.SetActive(true);
 
@@ -212,6 +227,11 @@ public class Player_Paddle : Paddle
     public void GrassPaddleOn()
     {
         AudioManager.instance.MagicAtive(magicActiveClip);
+
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(true);
+        luzAmarela.SetActive(false);
+
         isGrassPaddle = true;
         grassPaddle.SetActive(true);
 
@@ -224,6 +244,11 @@ public class Player_Paddle : Paddle
 
     public void MagicPaddleOff()
     {
+
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(false);
+
         isGrassPaddle = false;
         grassPaddle.SetActive(false);
 

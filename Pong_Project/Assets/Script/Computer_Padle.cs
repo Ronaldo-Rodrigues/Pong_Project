@@ -46,12 +46,21 @@ public class Computer_Padle : Paddle
     public AudioClip shatter1Clip;
     public AudioClip shatter2Clip;
 
+    //Luzes
+    public GameObject luzAzul;
+    public GameObject luzVerde;
+    public GameObject luzAmarela;
+
     private void Start()
     {
        
         playerMagic = GameObject.FindGameObjectWithTag("Player Paddle");
         _rb = GetComponent<Rigidbody2D>();
-        
+
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(false);
+
         ResetCompPaddle();
 
     }
@@ -220,6 +229,11 @@ public class Computer_Padle : Paddle
     }
     public void FirePaddleOn()
     {
+
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(true);
+
         isFirePaddle = true;
         firePaddle.SetActive(true);
 
@@ -244,6 +258,11 @@ public class Computer_Padle : Paddle
     }  
     public void AquaPaddleOn()
     {
+
+        luzAzul.SetActive(true);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(false);
+
         isAquaPaddle = true;
         aquaPaddle.SetActive(true);
 
@@ -269,6 +288,11 @@ public class Computer_Padle : Paddle
     }
     public void GrassPaddleOn()
     {
+
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(true);
+        luzAmarela.SetActive(false);
+
         isGrassPaddle = true;
         grassPaddle.SetActive(true);
 
@@ -281,6 +305,11 @@ public class Computer_Padle : Paddle
 
     public void MagicPaddleOff()
     {
+
+        luzAzul.SetActive(false);
+        luzVerde.SetActive(false);
+        luzAmarela.SetActive(false);
+
         isGrassPaddle = false;
         grassPaddle.SetActive(false);
 
